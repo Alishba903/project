@@ -119,3 +119,60 @@ habitList.onclick = function(e) {
 };
 
 updateTimerDisplay();
+
+// --- Streak Functionality ---
+const streakDisplay = document.getElementById('streak-display');
+const bestStreakDisplay = document.getElementById('best-streak-display');
+
+function getToday() {
+    const now = new Date();
+    return now.toISOString().slice(0, 10); // YYYY-MM-DD
+}
+
+function getStreakData() {
+    return JSON.parse(localStorage.getItem('streakData') || '{"current":0,"best":0,"lastDate":""}');
+}
+
+function setStreakData(data) {
+    localStorage.setItem('streakData', JSON.stringify(data));
+}
+
+function updateStreakDisplay() {
+    const streakData = getStreakData();
+    streakDisplay.textContent = `Current Streak: ${streakData.current} day${streakData.current === 1 ? '' : 's'}`;
+    bestStreakDisplay.textContent = `Best Streak: ${streakData.best} day${streakData.best === 1 ? '' : 's'}`;
+}
+
+function markStreakIfNeeded() {
+    const streakData = getStreakData();
+    const today = getToday();
+    if (streakData.lastDate !== today) {
+        // Only count as streak if at least one habit is done today
+        if (habits.some(h => h.done)) {
+            const lastDate = new Date(streakData.lastDate);
+            const now = new Date(today);
+            const diff = (now - lastDate) / (1000 * 60 * 60 * 24);
+            if (diff === 1) {
+                streakData.current += 1;
+            } else {
+                streakData.current = 1;
+            }
+            if (streakData.current > streakData.best) {
+                streakData.best = streakData.current;
+            }
+            streakData.lastDate = today;
+            setStreakData(streakData);
+        }
+    }
+}
+
+// When a habit is marked as done, check streak
+habitList.addEventListener('click', function(e) {
+    if (e.target && e.target.textContent === '✓') {
+        markStreakIfNeeded();
+        updateStreakDisplay();
+    }
+});
+
+// On load, update streak display
+updateStreakDisplay();
