@@ -1,9 +1,10 @@
 body {
-    background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+    background: linear-gradient(135deg, #000000 0%, #ae9dc7 100%);
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    color: #000000;
 }
 
 .main-content {
@@ -17,9 +18,9 @@ body {
 
 .habit-section {
     flex: 1 1 55%;
-    background: rgba(255,255,255,0.95);
+    background: #f6f7fc;
     border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(60, 60, 60, 0.18);
+    box-shadow: 0 8px 32px rgba(174, 157, 199, 0.18);
     padding: 36px 28px 28px 28px;
     min-width: 320px;
     z-index: 1;
@@ -27,11 +28,12 @@ body {
 
 h1 {
     text-align: center;
-    color: #43c6ac;
+    color: #000000;
     margin-bottom: 28px;
     font-weight: 700;
     letter-spacing: 1px;
     font-size: 2.1rem;
+    text-shadow: 2px 2px 8px #ae9dc7, 0 2px 8px #00000044;
 }
 
 #habit-form {
@@ -43,31 +45,32 @@ h1 {
 #habit-input {
     flex: 1;
     padding: 10px 12px;
-    border: 1.5px solid #43c6ac;
+    border: 1.5px solid #ae9dc7;
     border-radius: 7px;
     font-size: 1.08rem;
-    background: #f8ffae33;
+    background: #f6f7fc;
     outline: none;
+    color: #000000;
     transition: border 0.2s;
 }
 #habit-input:focus {
-    border: 1.5px solid #f7971e;
+    border: 1.5px solid #d1c8e4;
 }
 
 #habit-form button {
-    background: linear-gradient(135deg, #43c6ac 0%, #f7971e 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #ae9dc7 0%, #d1c8e4 100%);
+    color: #000000;
     border: none;
     border-radius: 7px;
     padding: 10px 20px;
     font-size: 1.08rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(67,198,172,0.08);
+    box-shadow: 0 2px 8px rgba(174, 157, 199, 0.08);
     transition: background 0.2s, transform 0.1s;
 }
 #habit-form button:hover {
-    background: linear-gradient(135deg, #f7971e 0%, #43c6ac 100%);
+    background: linear-gradient(135deg, #d1c8e4 0%, #ae9dc7 100%);
     transform: translateY(-2px) scale(1.04);
 }
 
@@ -80,47 +83,47 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #fffbe7;
-    border: 1.5px solid #f7971e;
+    background: #f6f7fc;
+    border: 1.5px solid #ae9dc7;
     border-radius: 7px;
     margin-bottom: 14px;
     padding: 12px 14px;
     transition: background 0.2s, border 0.2s;
-    box-shadow: 0 1px 4px rgba(67,198,172,0.07);
+    box-shadow: 0 1px 4px rgba(174, 157, 199, 0.07);
 }
 
 .habit-name {
     flex: 1;
     font-size: 1.08rem;
-    color: #333;
+    color: #000000;
     font-weight: 500;
 }
 
 .habit-done {
-    background: #d4ffe7;
-    border: 1.5px solid #43c6ac;
+    background: #ae9dc7;
+    border: 1.5px solid #d1c8e4;
     opacity: 0.7;
 }
 
 .habit-actions button {
     background: none;
     border: none;
-    color: #f7971e;
+    color: #ae9dc7;
     font-size: 1.2rem;
     cursor: pointer;
     margin-left: 12px;
     transition: color 0.2s, transform 0.1s;
 }
 .habit-actions button:hover {
-    color: #43c6ac;
+    color: #000000;
     transform: scale(1.2);
 }
 
 .timer-section {
     flex: 1 1 35%;
-    background: #f8ffaecc;
+    background: #d1c8e4;
     border-radius: 14px;
-    box-shadow: 0 2px 16px rgba(67,198,172,0.13);
+    box-shadow: 0 2px 16px rgba(174, 157, 199, 0.13);
     padding: 32px 20px 24px 20px;
     display: flex;
     flex-direction: column;
@@ -133,7 +136,7 @@ h1 {
 }
 
 .timer-section h2 {
-    color: #f7971e;
+    color: #ae9dc7;
     margin-bottom: 12px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -142,18 +145,18 @@ h1 {
 #timer-display {
     font-size: 2.1rem;
     font-weight: 700;
-    color: #43c6ac;
+    color: #000000;
     margin-bottom: 16px;
     letter-spacing: 2px;
-    background: #fff;
+    background: #f6f7fc;
     border-radius: 8px;
     padding: 8px 18px;
-    box-shadow: 0 1px 4px rgba(67,198,172,0.07);
+    box-shadow: 0 1px 4px rgba(174, 157, 199, 0.07);
 }
 
 .timer-section button {
-    background: linear-gradient(135deg, #43c6ac 0%, #f7971e 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #ae9dc7 0%, #d1c8e4 100%);
+    color: #000000;
     border: none;
     border-radius: 7px;
     padding: 7px 16px;
@@ -165,13 +168,13 @@ h1 {
 }
 
 .timer-section button:hover {
-    background: linear-gradient(135deg, #f7971e 0%, #43c6ac 100%);
+    background: linear-gradient(135deg, #d1c8e4 0%, #ae9dc7 100%);
     transform: scale(1.07);
 }
 
 #timer-task-name {
     margin-top: 8px;
-    color: #333;
+    color: #000000;
     font-size: 1rem;
     min-height: 20px;
     text-align: center;
@@ -180,20 +183,20 @@ h1 {
 #streak-section {
     margin-top: 24px;
     width: 100%;
-    background: #fffbe7;
+    background: #f6f7fc;
     border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(67,198,172,0.07);
+    box-shadow: 0 1px 4px rgba(174, 157, 199, 0.07);
     padding: 14px 10px 10px 10px;
     text-align: center;
 }
 #streak-section h3 {
-    color: #43c6ac;
+    color: #ae9dc7;
     margin: 0 0 8px 0;
     font-size: 1.1rem;
     font-weight: 600;
 }
 #streak-display, #best-streak-display {
-    color: #f7971e;
+    color: #000000;
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 2px;
