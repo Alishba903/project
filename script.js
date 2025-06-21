@@ -176,3 +176,12 @@ habitList.addEventListener('click', function(e) {
 
 // On load, update streak display
 updateStreakDisplay();
+
+// Manual Update Streak Button
+const updateStreakBtn = document.getElementById('update-streak-btn');
+if (updateStreakBtn) {
+    updateStreakBtn.onclick = function() {
+        markStreakIfNeeded();
+        updateStreakDisplay();
+    };
+}
