@@ -1,0 +1,108 @@
+body {
+    background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 420px;
+    margin: 50px auto;
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(60, 60, 60, 0.18);
+    padding: 36px 28px 28px 28px;
+    backdrop-filter: blur(2px);
+}
+
+h1 {
+    text-align: center;
+    color: #43c6ac;
+    margin-bottom: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 2.1rem;
+}
+
+#habit-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+#habit-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1.5px solid #43c6ac;
+    border-radius: 7px;
+    font-size: 1.08rem;
+    background: #f8ffae33;
+    outline: none;
+    transition: border 0.2s;
+}
+#habit-input:focus {
+    border: 1.5px solid #f7971e;
+}
+
+#habit-form button {
+    background: linear-gradient(135deg, #43c6ac 0%, #f7971e 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 20px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(67,198,172,0.08);
+    transition: background 0.2s, transform 0.1s;
+}
+#habit-form button:hover {
+    background: linear-gradient(135deg, #f7971e 0%, #43c6ac 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+
+#habit-list {
+    list-style: none;
+    padding: 0;
+}
+
+.habit-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fffbe7;
+    border: 1.5px solid #f7971e;
+    border-radius: 7px;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    transition: background 0.2s, border 0.2s;
+    box-shadow: 0 1px 4px rgba(67,198,172,0.07);
+}
+
+.habit-name {
+    flex: 1;
+    font-size: 1.08rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.habit-done {
+    background: #d4ffe7;
+    border: 1.5px solid #43c6ac;
+    opacity: 0.7;
+}
+
+.habit-actions button {
+    background: none;
+    border: none;
+    color: #f7971e;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 12px;
+    transition: color 0.2s, transform 0.1s;
+}
+.habit-actions button:hover {
+    color: #43c6ac;
+    transform: scale(1.2);
+}
