@@ -6,14 +6,23 @@ body {
     min-height: 100vh;
 }
 
-.container {
-    max-width: 420px;
-    margin: 50px auto;
+.main-content {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 60px auto 0 auto;
+}
+
+.habit-section {
+    flex: 1 1 55%;
     background: rgba(255,255,255,0.95);
     border-radius: 18px;
     box-shadow: 0 8px 32px rgba(60, 60, 60, 0.18);
     padding: 36px 28px 28px 28px;
-    backdrop-filter: blur(2px);
+    min-width: 320px;
+    z-index: 1;
 }
 
 h1 {
@@ -105,4 +114,87 @@ h1 {
 .habit-actions button:hover {
     color: #43c6ac;
     transform: scale(1.2);
+}
+
+.timer-section {
+    flex: 1 1 35%;
+    background: #f8ffaecc;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(67,198,172,0.13);
+    padding: 32px 20px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 220px;
+    max-width: 320px;
+    margin-top: 0;
+    position: static;
+    z-index: 2;
+}
+
+.timer-section h2 {
+    color: #f7971e;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#timer-display {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #43c6ac;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px 18px;
+    box-shadow: 0 1px 4px rgba(67,198,172,0.07);
+}
+
+.timer-section button {
+    background: linear-gradient(135deg, #43c6ac 0%, #f7971e 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 6px 10px 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.timer-section button:hover {
+    background: linear-gradient(135deg, #f7971e 0%, #43c6ac 100%);
+    transform: scale(1.07);
+}
+
+#timer-task-name {
+    margin-top: 8px;
+    color: #333;
+    font-size: 1rem;
+    min-height: 20px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+        gap: 18px;
+        margin: 20px auto 0 auto;
+    }
+    .habit-section, .timer-section {
+        min-width: unset;
+        width: 100%;
+        max-width: 98vw;
+    }
+}
+
+.container {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    max-width: unset;
+    margin: 0;
 }

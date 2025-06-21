@@ -64,3 +64,58 @@ habitForm.onsubmit = function(e) {
 
 // Initial render
 renderHabits();
+
+// Timer functionality
+let timerInterval = null;
+let timerSeconds = 0;
+let timerRunning = false;
+
+const timerDisplay = document.getElementById('timer-display');
+const startBtn = document.getElementById('start-timer');
+const pauseBtn = document.getElementById('pause-timer');
+const resetBtn = document.getElementById('reset-timer');
+const timerTaskName = document.getElementById('timer-task-name');
+
+function updateTimerDisplay() {
+    const hrs = String(Math.floor(timerSeconds / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, '0');
+    const secs = String(timerSeconds % 60).padStart(2, '0');
+    timerDisplay.textContent = `${hrs}:${mins}:${secs}`;
+}
+
+function startTimer() {
+    if (!timerRunning) {
+        timerRunning = true;
+        timerInterval = setInterval(() => {
+            timerSeconds++;
+            updateTimerDisplay();
+        }, 1000);
+    }
+}
+
+function pauseTimer() {
+    timerRunning = false;
+    clearInterval(timerInterval);
+}
+
+function resetTimer() {
+    timerRunning = false;
+    clearInterval(timerInterval);
+    timerSeconds = 0;
+    updateTimerDisplay();
+}
+
+startBtn.onclick = startTimer;
+pauseBtn.onclick = pauseTimer;
+resetBtn.onclick = resetTimer;
+
+// Optional: Set timer task name from selected habit
+habitList.onclick = function(e) {
+    const li = e.target.closest('.habit-item');
+    if (li) {
+        const name = li.querySelector('.habit-name').textContent;
+        timerTaskName.textContent = `Current Task: ${name}`;
+    }
+};
+
+updateTimerDisplay();

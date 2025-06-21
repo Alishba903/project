@@ -9,11 +9,23 @@
 <body>
     <div class="container">
         <h1>Habit Tracker</h1>
-        <form id="habit-form">
-            <input type="text" id="habit-input" placeholder="Enter a new habit" required />
-            <button type="submit">Add Habit</button>
-        </form>
-        <ul id="habit-list"></ul>
+        <div class="main-content">
+            <div class="habit-section">
+                <form id="habit-form">
+                    <input type="text" id="habit-input" placeholder="Enter a new habit" required />
+                    <button type="submit">Add Habit</button>
+                </form>
+                <ul id="habit-list"></ul>
+            </div>
+            <div class="timer-section">
+                <h2>Task Timer</h2>
+                <div id="timer-display">00:00:00</div>
+                <button id="start-timer">Start</button>
+                <button id="pause-timer">Pause</button>
+                <button id="reset-timer">Reset</button>
+                <div id="timer-task-name"></div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
