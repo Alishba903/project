@@ -1,10 +1,73 @@
 body {
-    background: linear-gradient(135deg, #000000 0%, #ae9dc7 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    color: #000000;
+    color: #232946;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 16px 16px 16px;
+}
+
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    height: 64px;
+    box-shadow: 0 2px 16px rgba(102, 126, 234, 0.13);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-logo {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px #764ba2cc;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding-right: 42px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+.navbar-links li {
+    flex: 0 0 auto;
+}
+
+.navbar-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.navbar-links li a:hover {
+    background-color: #fff;
+    color: #764ba2;
 }
 
 .main-content {
@@ -12,28 +75,43 @@ body {
     gap: 32px;
     justify-content: center;
     align-items: flex-start;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 60px auto 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .habit-section {
-    flex: 1 1 55%;
-    background: #f6f7fc;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(174, 157, 199, 0.18);
-    padding: 36px 28px 28px 28px;
+    background: rgba(255,255,255,0.98);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.13);
+    border: 1.5px solid #a5b4fc;
+    padding: 44px 36px 36px 36px;
     min-width: 320px;
     z-index: 1;
+    backdrop-filter: blur(2px);
+    max-width: 480px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 h1 {
+    color: #fff;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    padding: 18px 0 18px 0;
+    border-radius: 18px;
+    margin-bottom: 36px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 2.5rem;
     text-align: center;
-    color: #000000;
-    margin-bottom: 28px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 2.1rem;
-    text-shadow: 2px 2px 8px #ae9dc7, 0 2px 8px #00000044;
+    box-shadow: 0 4px 24px rgba(102, 126, 234, 0.18);
+    text-shadow: 0 2px 16px #764ba2cc, 0 2px 8px #23294644;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s;
+}
+h1:hover {
+    box-shadow: 0 8px 32px rgba(118, 75, 162, 0.22);
 }
 
 #habit-form {
@@ -45,12 +123,12 @@ h1 {
 #habit-input {
     flex: 1;
     padding: 10px 12px;
-    border: 1.5px solid #ae9dc7;
+    border: 1.5px solid #414345;
     border-radius: 7px;
     font-size: 1.08rem;
-    background: #f6f7fc;
+    background: #f5f7fa;
     outline: none;
-    color: #000000;
+    color: #232946;
     transition: border 0.2s;
 }
 #habit-input:focus {
@@ -58,8 +136,8 @@ h1 {
 }
 
 #habit-form button {
-    background: linear-gradient(135deg, #ae9dc7 0%, #d1c8e4 100%);
-    color: #000000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
     border: none;
     border-radius: 7px;
     padding: 10px 20px;
@@ -67,11 +145,11 @@ h1 {
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(174, 157, 199, 0.08);
-    transition: background 0.2s, transform 0.1s;
+    transition: background-color 0.2s, transform 0.1s;
 }
 #habit-form button:hover {
-    background: linear-gradient(135deg, #d1c8e4 0%, #ae9dc7 100%);
-    transform: translateY(-2px) scale(1.04);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: rgb(77, 77, 79);
 }
 
 #habit-list {
@@ -83,60 +161,58 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #f6f7fc;
-    border: 1.5px solid #ae9dc7;
+    background: rgba(255,255,255,0.98);
+    border: 1.2px solid #e0e3e7;
     border-radius: 7px;
     margin-bottom: 14px;
     padding: 12px 14px;
-    transition: background 0.2s, border 0.2s;
-    box-shadow: 0 1px 4px rgba(174, 157, 199, 0.07);
+    transition: background-color 0.2s, border 0.2s;
+    box-shadow: 0 1px 6px rgba(65, 67, 69, 0.07);
 }
 
 .habit-name {
     flex: 1;
     font-size: 1.08rem;
-    color: #000000;
+    color: #232946;
     font-weight: 500;
 }
 
 .habit-done {
-    background: #ae9dc7;
-    border: 1.5px solid #d1c8e4;
+    background-color: #a5b4fc;
+    border-color: #667eea;
     opacity: 0.7;
 }
 
 .habit-actions button {
+    color: #764ba2;
     background: none;
     border: none;
-    color: #ae9dc7;
     font-size: 1.2rem;
     cursor: pointer;
     margin-left: 12px;
     transition: color 0.2s, transform 0.1s;
 }
 .habit-actions button:hover {
-    color: #000000;
+    color: #232946;
     transform: scale(1.2);
 }
 
 .timer-section {
-    flex: 1 1 35%;
-    background: #d1c8e4;
-    border-radius: 14px;
-    box-shadow: 0 2px 16px rgba(174, 157, 199, 0.13);
-    padding: 32px 20px 24px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: rgba(118, 75, 162, 0.10);
+    border-radius: 20px;
+    box-shadow: 0 2px 24px rgba(102, 126, 234, 0.10);
+    border: 1.5px solid #a5b4fc;
+    padding: 40px 36px 32px 36px;
     min-width: 220px;
-    max-width: 320px;
+    max-width: 340px;
     margin-top: 0;
     position: static;
     z-index: 2;
+    backdrop-filter: blur(2px);
 }
 
 .timer-section h2 {
-    color: #ae9dc7;
+    color: #414345;
     margin-bottom: 12px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -145,18 +221,18 @@ h1 {
 #timer-display {
     font-size: 2.1rem;
     font-weight: 700;
-    color: #000000;
+    color: #232946;
     margin-bottom: 16px;
     letter-spacing: 2px;
-    background: #f6f7fc;
+    background: #f5f7fa;
     border-radius: 8px;
     padding: 8px 18px;
     box-shadow: 0 1px 4px rgba(174, 157, 199, 0.07);
 }
 
 .timer-section button {
-    background: linear-gradient(135deg, #ae9dc7 0%, #d1c8e4 100%);
-    color: #000000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
     border: none;
     border-radius: 7px;
     padding: 7px 16px;
@@ -164,17 +240,17 @@ h1 {
     font-weight: 500;
     margin: 0 6px 10px 6px;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 .timer-section button:hover {
-    background: linear-gradient(135deg, #d1c8e4 0%, #ae9dc7 100%);
+    background-color: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     transform: scale(1.07);
 }
 
 #timer-task-name {
     margin-top: 8px;
-    color: #000000;
+    color: #232946;
     font-size: 1rem;
     min-height: 20px;
     text-align: center;
@@ -183,20 +259,29 @@ h1 {
 #streak-section {
     margin-top: 24px;
     width: 100%;
-    background: #f6f7fc;
-    border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(174, 157, 199, 0.07);
-    padding: 14px 10px 10px 10px;
+    background: rgba(255,255,255,0.97);
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(65, 67, 69, 0.10);
+    padding: 16px 12px 12px 12px;
+    border: 1.2px solid #e0e3e7;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#streak-section > * {
+    width: 100%;
+    max-width: 220px;
 }
 #streak-section h3 {
-    color: #ae9dc7;
+    color: #764ba2;
     margin: 0 0 8px 0;
     font-size: 1.1rem;
     font-weight: 600;
 }
 #streak-display, #best-streak-display {
-    color: #000000;
+    color: #232946;
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 2px;
@@ -204,33 +289,216 @@ h1 {
 
 #update-streak-btn {
     margin-top: 10px;
-    background: linear-gradient(135deg, #ae9dc7 0%, #d1c8e4 100%);
-    color: #000000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
     border: none;
     border-radius: 7px;
     padding: 7px 16px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    transition: background-color 0.2s, transform 0.1s;
     box-shadow: 0 1px 4px rgba(174, 157, 199, 0.07);
 }
 #update-streak-btn:hover {
-    background: linear-gradient(135deg, #d1c8e4 0%, #ae9dc7 100%);
+    background-color: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: #232946;
     transform: scale(1.07);
 }
 
-@media (max-width: 900px) {
-    .main-content {
-        flex-direction: column;
-        gap: 18px;
-        margin: 20px auto 0 auto;
-    }
-    .habit-section, .timer-section {
-        min-width: unset;
-        width: 100%;
-        max-width: 98vw;
-    }
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(44, 44, 62, 0.25);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #fff;
+    margin: 10% auto;
+    padding: 32px 24px 24px 24px;
+    border: 1.5px solid #a5b4fc;
+    border-radius: 18px;
+    width: 90%;
+    max-width: 350px;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.18);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.close {
+    color: #764ba2;
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close:hover {
+    color: #232946;
+}
+#edit-habit-input {
+    width: 90%;
+    padding: 10px 12px;
+    border: 1.5px solid #414345;
+    border-radius: 7px;
+    font-size: 1.08rem;
+    background: #f5f7fa;
+    outline: none;
+    color: #232946;
+    margin-bottom: 18px;
+}
+#save-edit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 20px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(174, 157, 199, 0.08);
+    transition: background-color 0.2s, transform 0.1s;
+}
+#save-edit-btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: rgb(77, 77, 79);
+}
+/* Inline edit input */
+.inline-edit-input {
+    font-size: 1.08rem;
+    color: #232946;
+    font-weight: 500;
+    border: 1.2px solid #e0e3e7;
+    border-radius: 5px;
+    padding: 4px 8px;
+    background: #f8f9fb;
+    margin: 0;
+    width: 95%;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(102, 126, 234, 0.07);
+    transition: border 0.18s, box-shadow 0.18s, background 0.18s;
+}
+.inline-edit-input:focus {
+    border: 1.2px solid #764ba2;
+    box-shadow: 0 2px 8px rgba(118, 75, 162, 0.10);
+    background: #f5f7fa;
+}
+
+.progress-section {
+    margin: 40px auto 0 auto;
+    max-width: 700px;
+    width: 100%;
+    background: rgba(255,255,255,0.98);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(102, 126, 234, 0.10);
+    border: 1.5px solid #a5b4fc;
+    padding: 32px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.progress-section h2 {
+    color: #764ba2;
+    margin-bottom: 18px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.progress-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.progress-tab {
+    background: #f5f7fa;
+    color: #764ba2;
+    border: 1.2px solid #a5b4fc;
+    border-radius: 7px;
+    padding: 7px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+}
+.progress-tab.active, .progress-tab:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: 1.2px solid #764ba2;
+}
+#progress-view-container {
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fb;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(65, 67, 69, 0.07);
+    padding: 18px 8px;
+    margin-top: 8px;
+    overflow-x: auto;
+}
+
+.calendar-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(102, 126, 234, 0.08);
+    margin: 0 auto;
+    font-size: 1rem;
+    overflow: hidden;
+}
+.calendar-table th, .calendar-table td {
+    text-align: center;
+    padding: 10px 0;
+    width: 14.2%;
+    border: none;
+}
+.calendar-table th {
+    background: #f5f7fa;
+    color: #764ba2;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-bottom: 1.5px solid #a5b4fc;
+}
+.calendar-table td {
+    background: #f8f9fb;
+    color: #232946;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+    cursor: pointer;
+}
+.calendar-table td.calendar-done {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.13);
+}
+.calendar-table td:hover {
+    background: #e0e3e7;
+}
+.calendar-header {
+    text-align: center;
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: #764ba2;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
 .container {
@@ -240,4 +508,55 @@ h1 {
     border-radius: 0;
     max-width: unset;
     margin: 0;
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+        gap: 18px;
+        margin: 20px auto 0 auto;
+        max-width: 98vw;
+    }
+    .habit-section, .timer-section {
+        min-width: unset;
+        width: 100%;
+        max-width: 98vw;
+        padding-left: 8vw;
+        padding-right: 8vw;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar-links {
+        gap: 12px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 4vw;
+    }
+    .navbar-logo {
+        margin-bottom: 8px;
+        font-size: 1.2rem;
+    }
+    .navbar-links {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .habit-section, .timer-section {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+    h1 {
+        font-size: 1.3rem;
+        padding: 10px 0;
+    }
+    h2 {
+        font-size: 1.1rem;
+    }
 }
