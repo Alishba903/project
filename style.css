@@ -591,28 +591,96 @@ body.dark-mode .glass-toggle-btn {
 }
 
 body.dark-mode {
-    background: #181818;
+    background: linear-gradient(135deg, #232946 0%, #181818 100%);
     color: #f1f1f1;
+    transition: background 0.4s, color 0.4s;
 }
+
+.dark-mode .navbar {
+    background: rgba(44, 44, 62, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.28);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255,255,255,0.10);
+}
+
+.dark-mode .habit-section,
+.dark-mode .progress-section,
+.dark-mode .timer-section {
+    background: rgba(44, 44, 62, 0.55);
+    color: #f1f1f1;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.18);
+    border: 1.5px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
 .dark-mode .habit-item {
-    background-color: #232323;
+    background: rgba(44, 44, 62, 0.65);
     color: #f1f1f1;
+    border: 1.2px solid #33374d;
+    box-shadow: 0 1px 6px rgba(44, 44, 62, 0.18);
 }
+
+.dark-mode .habit-done {
+    background: linear-gradient(90deg, #764ba2 0%, #232946 100%);
+    border-color: #764ba2;
+    color: #fff;
+}
+
 .dark-mode .calendar-table,
 .dark-mode .calendar-header {
-    background: #232323;
+    background: rgba(44, 44, 62, 0.65);
+    color: #f1f1f1;
+    border-radius: 12px;
+}
+
+.dark-mode .calendar-table th {
+    background: rgba(44, 44, 62, 0.85);
+    color: #a5b4fc;
+}
+
+.dark-mode .calendar-table td {
+    background: rgba(44, 44, 62, 0.45);
     color: #f1f1f1;
 }
-.dark-mode button {
-    background: #333;
-    color: #f1f1f1;
-    border: 1px solid #444;
+
+.dark-mode .calendar-table td.calendar-done {
+    background: linear-gradient(135deg, #764ba2 0%, #232946 100%);
+    color: #fff;
 }
+
+.dark-mode button,
+.dark-mode .glass-toggle-btn {
+    background: rgba(44,44,62,0.45);
+    color: #f1f1f1;
+    border: 1.5px solid #444;
+    box-shadow: 0 2px 8px rgba(44,44,62,0.18);
+}
+
+.dark-mode button:hover,
+.dark-mode .glass-toggle-btn:hover {
+    background: rgba(118, 75, 162, 0.22);
+    color: #fff;
+}
+
 .dark-mode input,
-.dark-mode textarea {
-    background: #222;
+.dark-mode textarea,
+.dark-mode .inline-edit-input {
+    background: rgba(44,44,62,0.65);
     color: #f1f1f1;
-    border: 1px solid #444;
+    border: 1.2px solid #444;
+    box-shadow: 0 1px 4px rgba(44,44,62,0.13);
 }
 
+.dark-mode #timer-display,
+.dark-mode #progress-view-container {
+    background: rgba(44,44,62,0.45);
+    color: #f1f1f1;
+    box-shadow: 0 1px 8px rgba(44,44,62,0.13);
+}
 
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode .navbar-logo {
+    color: #a5b4fc;
+    text-shadow: 0 2px 8px #232946cc;
+}
