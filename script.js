@@ -1,126 +1,159 @@
 // Habit Tracker JavaScript
 
-const habitForm = document.getElementById('habit-form');
-const habitInput = document.getElementById('habit-input');
-const habitList = document.getElementById('habit-list');
+const habitForm = document.getElementById("habit-form");
+const habitInput = document.getElementById("habit-input");
+const habitList = document.getElementById("habit-list");
+const darkModeBtn = document.getElementById("toggle-dark-mode");
+const editModal = document.getElementById("edit-modal");
+const closeModalBtn = document.getElementById("close-modal");
+const editHabitInput = document.getElementById("edit-habit-input");
+const saveEditBtn = document.getElementById("save-edit-btn");
+const timerDisplay = document.getElementById("timer-display");
+const timerTaskName = document.getElementById("timer-task-name");
+const streakDisplay = document.getElementById("streak-display");
+const bestStreakDisplay = document.getElementById("best-streak-display");
+const progressViewContainer = document.getElementById("progress-view-container");
+const updateStreakBtn = document.getElementById("update-streak-btn");
+const progressTabs = document.querySelectorAll(".progress-tab");
 
-// Load habits from localStorage
-let habits = JSON.parse(localStorage.getItem('habits')) || [];
+let habits = JSON.parse(localStorage.getItem("habits")) || [];
+let editingIdx = null;
+let timerInterval = null;
+let timerSeconds = 0;
+let timerRunning = false;
 
+// Dark Mode Functionality
+function setDarkMode(on) {
+    document.body.classList.toggle("dark-mode", on);
+    localStorage.setItem("darkMode", on ? "1" : "0");
+}
+
+darkModeBtn.onclick = () => setDarkMode(!document.body.classList.contains("dark-mode"));
+if (localStorage.getItem("darkMode") === "1") setDarkMode(true);
+
+// Habit Management Functions
 function saveHabits() {
-    localStorage.setItem('habits', JSON.stringify(habits));
+    localStorage.setItem("habits", JSON.stringify(habits));
 }
 
 function renderHabits() {
-    habitList.innerHTML = '';
+    habitList.innerHTML = "";
     habits.forEach((habit, idx) => {
-        const li = document.createElement('li');
-        li.className = 'habit-item' + (habit.done ? ' habit-done' : '');
-
-        const nameSpan = document.createElement('span');
-        nameSpan.className = 'habit-name';
-        nameSpan.textContent = habit.name;
-        nameSpan.title = 'Click to edit inline';
-        // Inline edit on click
-        nameSpan.onclick = function(e) {
-            e.stopPropagation();
-            if (li.querySelector('.inline-edit-input')) return;
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = habit.name;
-            input.className = 'inline-edit-input';
-            input.onkeydown = function(ev) {
-                if (ev.key === 'Enter') {
-                    saveInlineEdit();
-                } else if (ev.key === 'Escape') {
-                    cancelInlineEdit();
-                }
-            };
-            input.onblur = cancelInlineEdit;
-            function saveInlineEdit() {
-                const newName = input.value.trim();
-                if (newName) {
-                    habits[idx].name = newName;
-                    saveHabits();
-                    renderHabits();
-                } else {
-                    cancelInlineEdit();
-                }
-            }
-            function cancelInlineEdit() {
-                renderHabits();
-            }
-            li.replaceChild(input, nameSpan);
-            input.focus();
-            input.select();
-        };
-
-        const actionsDiv = document.createElement('div');
-        actionsDiv.className = 'habit-actions';
-
-        const doneBtn = document.createElement('button');
-        doneBtn.textContent = habit.done ? '✓' : '○';
-        doneBtn.title = habit.done ? 'Mark as not done' : 'Mark as done';
-        doneBtn.onclick = () => {
-            habits[idx].done = !habits[idx].done;
-            saveHabits();
-            saveHabitCompletion();
-            renderHabits();
-        };
-
-        const editBtn = document.createElement('button');
-        editBtn.textContent = '✏️';
-        editBtn.title = 'Edit habit (modal)';
-        editBtn.onclick = (e) => {
-            e.stopPropagation();
-            openEditModal(idx);
-        };
-
-        const delBtn = document.createElement('button');
-        delBtn.textContent = '🗑';
-        delBtn.title = 'Delete habit';
-        delBtn.onclick = () => {
-            habits.splice(idx, 1);
-            saveHabits();
-            renderHabits();
-        };
-
-        actionsDiv.appendChild(doneBtn);
-        actionsDiv.appendChild(editBtn);
-        actionsDiv.appendChild(delBtn);
-
-        li.appendChild(nameSpan);
-        li.appendChild(actionsDiv);
+        const li = createHabitElement(habit, idx);
         habitList.appendChild(li);
     });
 }
 
-// Modal edit logic
-const editModal = document.getElementById('edit-modal');
-const closeModalBtn = document.getElementById('close-modal');
-const editHabitInput = document.getElementById('edit-habit-input');
-const saveEditBtn = document.getElementById('save-edit-btn');
-let editingIdx = null;
+function createHabitElement(habit, idx) {
+    const li = document.createElement("li");
+    li.className = "habit-item" + (habit.done ? " habit-done" : "");
 
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "habit-name";
+    nameSpan.textContent = habit.name;
+    nameSpan.title = "Click to edit inline";
+    nameSpan.onclick = (e) => inlineEditHabit(e, idx, habit.name);
+
+    const actionsDiv = createHabitActions(idx);
+    li.appendChild(nameSpan);
+    li.appendChild(actionsDiv);
+    return li;
+}
+
+function createHabitActions(idx) {
+    const actionsDiv = document.createElement("div");
+    actionsDiv.className = "habit-actions";
+
+    const doneBtn = createButton(habits[idx].done ? "✓" : "○", "Mark as done", () => {
+        habits[idx].done = !habits[idx].done;
+        saveHabits();
+        saveHabitCompletion();
+        renderHabits();
+    });
+
+    const editBtn = createButton("✏️", "Edit habit (modal)", (e) => {
+        e.stopPropagation();
+        openEditModal(idx);
+    });
+
+    const delBtn = createButton("🗑", "Delete habit", () => {
+        habits.splice(idx, 1);
+        saveHabits();
+        renderHabits();
+    });
+
+    actionsDiv.appendChild(doneBtn);
+    actionsDiv.appendChild(editBtn);
+    actionsDiv.appendChild(delBtn);
+    return actionsDiv;
+}
+
+function createButton(text, title, onClick) {
+    const button = document.createElement("button");
+    button.textContent = text;
+    button.title = title;
+    button.onclick = onClick;
+    return button;
+}
+
+function inlineEditHabit(e, idx, currentName) {
+    e.stopPropagation();
+    const li = e.target.parentElement;
+    if (li.querySelector(".inline-edit-input")) return;
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = currentName;
+    input.className = "inline-edit-input";
+    input.onkeydown = (ev) => {
+        if (ev.key === "Enter") saveInlineEdit(idx, input.value.trim());
+        else if (ev.key === "Escape") cancelInlineEdit();
+    };
+    input.onblur = cancelInlineEdit;
+
+    li.replaceChild(input, e.target);
+    input.focus();
+    input.select();
+}
+
+function saveInlineEdit(idx, newName) {
+    if (newName) {
+        habits[idx].name = newName;
+        saveHabits();
+        renderHabits();
+    } else {
+        cancelInlineEdit();
+    }
+}
+
+function cancelInlineEdit() {
+    renderHabits();
+}
+
+// Modal Edit Logic
 function openEditModal(idx) {
     editingIdx = idx;
     editHabitInput.value = habits[idx].name;
-    editModal.style.display = 'flex';
+    editModal.style.display = "flex";
     setTimeout(() => editHabitInput.focus(), 100);
 }
+
 function closeEditModal() {
-    editModal.style.display = 'none';
+    editModal.style.display = "none";
     editingIdx = null;
 }
+
 closeModalBtn.onclick = closeEditModal;
-window.onclick = function(event) {
+window.onclick = (event) => {
     if (event.target === editModal) closeEditModal();
 };
-editHabitInput.onkeydown = function(e) {
-    if (e.key === 'Enter') saveEditBtn.click();
-    if (e.key === 'Escape') closeEditModal();
+
+editHabitInput.onkeydown = (e) => {
+    if (e.key === "Enter") saveEditBtn.click();
+    if (e.key === "Escape") closeEditModal();
 };
-saveEditBtn.onclick = function() {
+
+saveEditBtn.onclick = () => {
     const newName = editHabitInput.value.trim();
     if (newName && editingIdx !== null) {
         habits[editingIdx].name = newName;
@@ -130,35 +163,23 @@ saveEditBtn.onclick = function() {
     }
 };
 
-habitForm.onsubmit = function(e) {
+// Habit Form Submission
+habitForm.onsubmit = (e) => {
     e.preventDefault();
     const name = habitInput.value.trim();
     if (name) {
         habits.push({ name, done: false });
         saveHabits();
         renderHabits();
-        habitInput.value = '';
+        habitInput.value = "";
     }
 };
 
-// Initial render
-renderHabits();
-
-// Timer functionality
-let timerInterval = null;
-let timerSeconds = 0;
-let timerRunning = false;
-
-const timerDisplay = document.getElementById('timer-display');
-const startBtn = document.getElementById('start-timer');
-const pauseBtn = document.getElementById('pause-timer');
-const resetBtn = document.getElementById('reset-timer');
-const timerTaskName = document.getElementById('timer-task-name');
-
+// Timer Functionality
 function updateTimerDisplay() {
-    const hrs = String(Math.floor(timerSeconds / 3600)).padStart(2, '0');
-    const mins = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, '0');
-    const secs = String(timerSeconds % 60).padStart(2, '0');
+    const hrs = String(Math.floor(timerSeconds / 3600)).padStart(2, "0");
+    const mins = String(Math.floor((timerSeconds % 3600) / 60)).padStart(2, "0");
+    const secs = String(timerSeconds % 60).padStart(2, "0");
     timerDisplay.textContent = `${hrs}:${mins}:${secs}`;
 }
 
@@ -184,58 +205,38 @@ function resetTimer() {
     updateTimerDisplay();
 }
 
-startBtn.onclick = startTimer;
-pauseBtn.onclick = pauseTimer;
-resetBtn.onclick = resetTimer;
+document.getElementById("start-timer").onclick = startTimer;
+document.getElementById("pause-timer").onclick = pauseTimer;
+document.getElementById("reset-timer").onclick = resetTimer;
 
-// Optional: Set timer task name from selected habit
-habitList.onclick = function(e) {
-    const li = e.target.closest('.habit-item');
-    if (li) {
-        const name = li.querySelector('.habit-name').textContent;
-        timerTaskName.textContent = `Current Task: ${name}`;
-    }
-};
-
-updateTimerDisplay();
-
-// --- Streak Functionality ---
-const streakDisplay = document.getElementById('streak-display');
-const bestStreakDisplay = document.getElementById('best-streak-display');
-
+// Streak Functionality
 function getToday() {
-    const now = new Date();
-    return now.toISOString().slice(0, 10); // YYYY-MM-DD
+    return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 }
 
 function getStreakData() {
-    return JSON.parse(localStorage.getItem('streakData') || '{"current":0,"best":0,"lastDate":""}');
+    return JSON.parse(localStorage.getItem("streakData") || '{"current":0,"best":0,"lastDate":""}');
 }
 
 function setStreakData(data) {
-    localStorage.setItem('streakData', JSON.stringify(data));
+    localStorage.setItem("streakData", JSON.stringify(data));
 }
 
 function updateStreakDisplay() {
     const streakData = getStreakData();
-    streakDisplay.textContent = `Current Streak: ${streakData.current} day${streakData.current === 1 ? '' : 's'}`;
-    bestStreakDisplay.textContent = `Best Streak: ${streakData.best} day${streakData.best === 1 ? '' : 's'}`;
+    streakDisplay.textContent = `Current Streak: ${streakData.current} day${streakData.current === 1 ? "" : "s"}`;
+    bestStreakDisplay.textContent = `Best Streak: ${streakData.best} day${streakData.best === 1 ? "" : "s"}`;
 }
 
 function markStreakIfNeeded() {
     const streakData = getStreakData();
     const today = getToday();
     if (streakData.lastDate !== today) {
-        // Only count as streak if at least one habit is done today
-        if (habits.some(h => h.done)) {
+        if (habits.some((h) => h.done)) {
             const lastDate = new Date(streakData.lastDate);
             const now = new Date(today);
             const diff = (now - lastDate) / (1000 * 60 * 60 * 24);
-            if (diff === 1) {
-                streakData.current += 1;
-            } else {
-                streakData.current = 1;
-            }
+            streakData.current = (diff === 1) ? streakData.current + 1 : 1;
             if (streakData.current > streakData.best) {
                 streakData.best = streakData.current;
             }
@@ -245,55 +246,31 @@ function markStreakIfNeeded() {
     }
 }
 
-// When a habit is marked as done, check streak
-habitList.addEventListener('click', function(e) {
-    if (e.target && e.target.textContent === '✓') {
+habitList.addEventListener("click", (e) => {
+    if (e.target && e.target.textContent === "✓") {
         markStreakIfNeeded();
         updateStreakDisplay();
     }
 });
 
-// On load, update streak display
-updateStreakDisplay();
-
-// Manual Update Streak Button
-const updateStreakBtn = document.getElementById('update-streak-btn');
-if (updateStreakBtn) {
-    updateStreakBtn.onclick = function() {
-        markStreakIfNeeded();
-        updateStreakDisplay();
-    };
-}
-
-// --- Progress View Logic ---
-const progressTabs = document.querySelectorAll('.progress-tab');
-const progressViewContainer = document.getElementById('progress-view-container');
-
-progressTabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-        document.querySelector('.progress-tab.active').classList.remove('active');
-        tab.classList.add('active');
+// Progress View Logic
+progressTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+        document.querySelector(".progress-tab.active").classList.remove("active");
+        tab.classList.add("active");
         renderProgressView(tab.dataset.view);
     });
 });
 
-function getHabitCompletionDates() {
-    // Example: { '2025-06-21': true, '2025-06-22': false, ... }
-    return JSON.parse(localStorage.getItem('habitCompletion') || '{}');
-}
-
 function renderProgressView(view) {
-    if (view === 'daily') {
+    if (view === "daily") {
         renderDailyCalendar();
-    } else if (view === 'weekly') {
-        progressViewContainer.innerHTML = '<div style="color:#764ba2;font-weight:600;">Weekly chart coming soon!</div>';
-    } else if (view === 'monthly') {
-        progressViewContainer.innerHTML = '<div style="color:#764ba2;font-weight:600;">Monthly chart coming soon!</div>';
+    } else {
+        progressViewContainer.innerHTML = `<div style="color:#764ba2;font-weight:600;">${view.charAt(0).toUpperCase() + view.slice(1)} chart coming soon!</div>`;
     }
 }
 
 function renderDailyCalendar() {
-    // Show current month calendar, highlight days with any habit completed
     const today = new Date();
     const year = today.getFullYear();
     const month = today.getMonth();
@@ -302,30 +279,36 @@ function renderDailyCalendar() {
     const startDay = firstDay.getDay();
     const daysInMonth = lastDay.getDate();
     const completion = getHabitCompletionDates();
-    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
     let html = `<div class="calendar-header">${monthNames[month]} ${year}</div>`;
     html += '<table class="calendar-table"><thead><tr>';
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    days.forEach(d => html += `<th>${d}</th>`);
-    html += '</tr></thead><tbody><tr>';
-    for (let i = 0; i < startDay; i++) html += '<td></td>';
+    ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach(d => html += `<th>${d}</th>`);
+    html += "</tr></thead><tbody><tr>";
+
+    for (let i = 0; i < startDay; i++) html += "<td></td>";
     for (let d = 1; d <= daysInMonth; d++) {
-        const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
         const done = completion[dateStr];
-        html += `<td class="calendar-cell${done ? ' calendar-done' : ''}">${d}</td>`;
-        if ((startDay + d) % 7 === 0) html += '</tr><tr>';
+        html += `<td class="calendar-cell${done ? " calendar-done" : ""}">${d}</td>`;
+        if ((startDay + d) % 7 === 0) html += "</tr><tr>";
     }
-    html += '</tr></tbody></table>';
+    html += "</tr></tbody></table>";
     progressViewContainer.innerHTML = html;
 }
 
-// Save completion data when any habit is marked done
-function saveHabitCompletion() {
-    const completion = getHabitCompletionDates();
-    const today = new Date().toISOString().slice(0,10);
-    completion[today] = habits.some(h => h.done);
-    localStorage.setItem('habitCompletion', JSON.stringify(completion));
+function getHabitCompletionDates() {
+    return JSON.parse(localStorage.getItem("habitCompletion") || "{}");
 }
 
-// Initial render for progress view
-if (progressViewContainer) renderProgressView('daily');
+function saveHabitCompletion() {
+    const completion = getHabitCompletionDates();
+    const today = new Date().toISOString().slice(0, 10);
+    completion[today] = habits.some((h) => h.done);
+    localStorage.setItem("habitCompletion", JSON.stringify(completion));
+}
+
+// Initial Render
+renderHabits();
+updateStreakDisplay();
+if (progressViewContainer) renderProgressView("daily");
