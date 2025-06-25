@@ -55,6 +55,7 @@ body {
 
 .navbar-links li {
     flex: 0 0 auto;
+    margin-top: 9px;
 }
 
 .navbar-links li a {
@@ -537,6 +538,28 @@ body.dark-mode .glass-toggle-btn {
     background: rgba(44,44,62,0.25);
     color: #f1f1f1;
     border: 1.5px solid #444;
+}
+
+.logs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 4;
+    background: rgba(44, 44, 62, 0.55);
+    color: #f1f1f1;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.18);
+    border: 1.5px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(10px)
+}
+
+.log{
+    margin: 40px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(102, 126, 234, 0.10);
+    border: 1.5px solid #a5b4fc;
+    padding: 32px 24px 24px 24px;
 }
 
 @media (max-width: 900px) {
