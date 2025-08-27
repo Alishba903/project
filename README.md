@@ -4,8 +4,8 @@ A brief, punchy description of what your app does and who it’s for.
 
 ## 🚀 Features
 
-- 🔐 Authentication with Clerk (or JWT)
-- 🧠 Modular architecture (Next.js + backend separation)
+- 🔐 
+- 🧠 Modular architecture ()
 - 📦 MongoDB integration
 - 🎨 Responsive UI with [your styling choice]
 - ⚙️ API routes for [brief description]
