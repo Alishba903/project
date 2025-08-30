@@ -2,7 +2,7 @@
 
 A brief, punchy description of what your app does and who it’s for.
 
-## 🚀 Features
+## 🚀Features
 
 - 🔐 
 - 🧠 Modular architecture ()
