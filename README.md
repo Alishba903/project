@@ -12,7 +12,7 @@ A brief, punchy description of what your app does and who it’s for.
 - 
 ## 📸 Demo
 
-Include a screenshot or link to a live demo (if available).
+Include a screenshot or link to a live demo (ifavailable).
 
 ## 🛠️ Tech Stack
 
@@ -20,7 +20,7 @@ Include a screenshot or link to a live demo (if available).
 - **Backend:** Node.js, Express
 - **Database:** MongoDB
 - **Auth:** Clerk / JWT
-- **Other:** [any libraries, tools, or services]
+- **Other:**[any libraries, tools, or services]
 
 ## 📦 Installation
 
