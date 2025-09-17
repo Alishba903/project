@@ -1,32 +1,30 @@
-# Project Name
 
-A brief, punchy description of what your app does and who it’s for.
+# Habit Tracker
 
-## 🚀Features
+Habit Tracker is a simple and interactive web application to help you build, track, and maintain your daily habits. Designed for anyone who wants to improve productivity, stay consistent, and visualize their progress.
 
-- 🔐 
-- 🧠 Modular architecture ()
-- 📦 MongoDB integration
-- 🎨 Responsive UI with [your styling choice]
-- ⚙️ API routes for [brief description]
-- 
-## 📸 Demo
 
-Include a screenshot or link to a live demo (ifavailable).
+## 🚀 Features
+
+- Add, edit, and delete habits
+- Track daily streaks and best streaks
+- Built-in task timer for focused work
+- Dark mode toggle
+- Responsive and modern UI
+- Data persistence with localStorage
+
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Next.js, React
-- **Backend:** Node.js, Express
-- **Database:** MongoDB
-- **Auth:** Clerk / JWT
-- **Other:**[any libraries, tools, or services]
+- **Frontend:** HTML, CSS, JavaScript
+- **Styling:** Custom CSS (responsive, glassmorphism)
+- **Persistence:** localStorage
 
-## 📦 Installation
 
-```bash
-git clone https://github.com/yourusername/project-name
-cd project-name
-npm install
-npm run dev
+## 📦 Usage
+
+1. Clone or download this repository.
+2. Open `index.html` in your web browser.
+
+No installation or backend required.
 A minimal app
