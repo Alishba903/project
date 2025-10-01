@@ -1,17 +1,12 @@
 
-# Habit Tracker
+# AnalyticsPro
 
-Habit Tracker is a simple and interactive web application to help you build, track, and maintain your daily habits. Designed for anyone who wants to improve productivity, stay consistent, and visualize their progress.
+
 
 
 ## 🚀 Features
 
-- Add, edit, and delete habits
-- Track daily streaks and best streaks
-- Built-in task timer for focused work
-- Dark mode toggle
-- Responsive and modern UI
-- Data persistence with localStorage
+
 
 
 ## 🛠️ Tech Stack
