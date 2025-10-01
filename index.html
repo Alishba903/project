@@ -17,67 +17,7 @@
              <button id="toggle-dark-mode" class="glass-toggle-btn" title="Toggle Dark Mode">🌙</button>
         </ul>
     </nav>
-    <div class="main-content">
-        <div class="habit-section">
-            <form id="habit-form">
-                <input type="text" id="habit-input" placeholder="Enter a new habit" required />
-                <button type="submit">Add Habit</button>
-            </form>
-            <ul id="habit-list"></ul>
-        </div>
-        <div class="timer-section">
-            <h2>Task Timer</h2>
-            <div id="timer-display">00:00:00</div>
-            <button id="start-timer">Start</button>
-            <button id="pause-timer">Pause</button>
-            <button id="reset-timer">Reset</button>
-            <div id="timer-task-name"></div>
-            <div id="streak-section">
-                <h3>Streak</h3>
-                <div id="streak-display">Current Streak: 0 days</div>
-                <div id="best-streak-display">Best Streak: 0 days</div>
-                <button id="update-streak-btn">Update Streak</button>
-            </div>
-        </div>
-    </div>
-    <div class="progress-section">
-        <h2>Progress View</h2>
-        <div class="progress-tabs">
-            <button class="progress-tab active" data-view="daily">Daily</button>
-            <button class="progress-tab" data-view="weekly">Weekly</button>
-            <button class="progress-tab" data-view="monthly">Monthly</button>
-        </div>
-        <div id="progress-view-container"></div>
-    </div>
-    <!-- Edit Habit Modal -->
-    <div id="edit-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="close-modal">&times;</span>
-            <h2>Edit Habit</h2>
-            <input type="text" id="edit-habit-input" />
-            <button id="save-edit-btn">Save</button>
-        </div>
-    </div>
-
-    <!-- Logs -->
-    <div class="logs">
-        <div class="water-log log">
-            <h2>Water Log</h2>
-        </div>
-        
-        <div class="exercise-log log">
-            <h2>Exercise Log</h2>
-        </div>
-        
-        <div class="sleep-log log">
-            <h2>Sleep Log</h2>
-        </div>
-        
-        <div class="mood-log log">
-            <h2>Mood Log</h2>
-        </div>
-    </div>
-
+   
         <script src="script.js"></script>
 </body>
 </html>
