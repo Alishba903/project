@@ -1,44 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AnalyticsPro</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="dashboard">
-        <!-- SMART NAVIGATION RAIL -->
-        <nav class="nav-rail">
-            <div class="logo">
-                <div class="logo-icon">A</div>
-                <div class="logo-text">AnalyticsPro</div>
-            </div>
-            
-            <ul class="nav-links">
-                <li><a href="#" class="active">
-                    <span class="icon">📊</span>
-                    <span class="nav-text">Dashboard</span>
-                </a></li>
-                <li><a href="#">
-                    <span class="icon">📈</span>
-                    <span class="nav-text">Analytics</span>
-                </a></li>
-                <li><a href="#">
-                    <span class="icon">👥</span>
-                    <span class="nav-text">Customers</span>
-                </a></li>
-                <li><a href="#">
-                    <span class="icon">💰</span>
-                    <span class="nav-text">Revenue</span>
-                </a></li>
-                <li><a href="#">
-                    <span class="icon">⚙️</span>
-                    <span class="nav-text">Settings</span>
-                </a></li>
-            </ul>
-        </nav>
-   
-        <script src="script.js"></script>
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="nav-rail">
+      <!-- Logo Section -->
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <div class="logo-text">AnalyticsPro</div>
+      </div>
+
+
+      <!-- Navigation Links-->
+      <ul class="nav-links">
+        <!-- Dashboard -->
+        <li>
+          <a href="#" class="active">
+            <i class="fas fa-chart-pie"></i>
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+
+        <!--Analytics-->
+        <li>
+            <a href="#" class="disabled" title="Feature Coming Soon">
+                <i class="fas fa-chart-line"></i>
+                <span class="nav-text">Analytics</span>
+            </a>
+        </li>
+
+        <!--Customers-->
+        <li>
+            <a href="#" class="disabled" title="Feature Coming Soon">
+                <i class="fas fa-users"></i>
+                <span class="nav-text">Customers</span>
+            </a>
+        </li>
+
+        <!--Products-->
+        <li>
+            <a href="#" class="disabled" title="Feature Coming Soon">
+                <i class="fas fa-box"></i>
+                <span class="nav-text">Products</span>
+            </a>
+        </li>
+
+        <!--Revenue-->
+        <li>
+            <a href="#" class="disabled" title="Feature Coming Soon">
+                <i class="fa-solid fa-money-bill"></i>
+                <span class="nav-text">Revenue</span>
+            </a>
+        </li>
+      </ul>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
 </html>

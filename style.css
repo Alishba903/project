@@ -3,3 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+  --primary-color: #232A3B; /*Ebony Clay*/
+  --secondary-color: #E6EAED; /*Athens Gray*/
+  --font-main: 'Poppins', sans-serif;
+  --font-size-base: 16px;
+  --spacing: 1rem;
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  background-color: var(--secondary-color);
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
