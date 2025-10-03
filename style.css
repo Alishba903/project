@@ -2,29 +2,43 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 :root {
   --primary-color: #232A3B; /*Ebony Clay*/
   --secondary-color: #E6EAED; /*Athens Gray*/
+  --carbon: #1a1a1a;
+  --graphite: #2d2d2d;
+  --steel: #404040;
+  --silver: #666666;
+  --cloud: #e8e8e8;
+  --snow: #f8f9fa;
+  --electric-blue: #0066ff;
+  --cyber-teal: #00d4aa;
+  --warning: #ff6b35;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --glass: rgba(255,255,255,0.9);
   --font-main: 'Poppins', sans-serif;
-  --font-size-base: 16px;
-  --spacing: 1rem;
 }
 
+/* #333; */
+
 body {
-  font-family: var(--font-main);
-  font-size: var(--font-size-base);
-  background-color: var(--secondary-color);
-  color: #333;
-  line-height: 1.6;
+    background: var(--secondary-color);
+    color: var(--carbon);
+    min-height: 100vh;
 }
 
 a {
-  color: var(--primary-color);
+  color: white;
   text-decoration: none;
 }
 
 ul {
   list-style: none;
+}
+
+.nav-rail{
+  background-color: var(--primary-color);
 }
