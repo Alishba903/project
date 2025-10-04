@@ -28,6 +28,8 @@ body {
     background: var(--secondary-color);
     color: var(--carbon);
     min-height: 100vh;
+    /* display: flex;
+    flex-direction: row; */
 }
 
 a {
@@ -39,6 +41,29 @@ ul {
   list-style: none;
 }
 
+.dashboard {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    min-height: 100vh;
+}
+
 .nav-rail{
-  background-color: var(--primary-color);
+    grid-row: 1/-1;
+    background-color: var(--glass);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255,255,255,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+     padding: 2rem 0;
+    transition: all 0.3s ease;
+    position: fixed;
+    width: 80px;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.nav-rail:hover {
+    width: 240px;
 }
