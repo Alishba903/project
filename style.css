@@ -1,13 +1,13 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 :root {
-  --primary-color: #232A3B; /*Ebony Clay*/
-  --secondary-color: #E6EAED; /*Athens Gray*/
+  --primary-color: #232a3b; /*Ebony Clay*/
+  --secondary-color: #e6eaed; /*Athens Gray*/
   --carbon: #1a1a1a;
   --graphite: #2d2d2d;
   --steel: #404040;
@@ -17,19 +17,19 @@
   --electric-blue: #0066ff;
   --cyber-teal: #00d4aa;
   --warning: #ff6b35;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-  --glass: rgba(255,255,255,0.9);
-  --font-main: 'Poppins', sans-serif;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --glass: rgba(255, 255, 255, 0.9);
+  --font-main: "Poppins", sans-serif;
 }
 
 /* #333; */
 
 body {
-    background: var(--secondary-color);
-    color: var(--carbon);
-    min-height: 100vh;
-    /* display: flex;
-    flex-direction: row; */
+  background: var(--secondary-color);
+  color: var(--carbon);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
 }
 
 a {
@@ -41,29 +41,22 @@ ul {
   list-style: none;
 }
 
-.dashboard {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    min-height: 100vh;
-}
-
-.nav-rail{
-    grid-row: 1/-1;
-    background-color: var(--glass);
-    backdrop-filter: blur(10px);
-    border-right: 1px solid rgba(255,255,255,0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-     padding: 2rem 0;
-    transition: all 0.3s ease;
-    position: fixed;
-    width: 80px;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 1000;
+.nav-rail {
+  background-color: var(--primary-color);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
+  transition: all 0.3s ease;
+  position: fixed;
+  width: 80px;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1000;
 }
 
 .nav-rail:hover {
-    width: 240px;
+  width: 240px;
 }
