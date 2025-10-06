@@ -7,8 +7,8 @@
 }
 
 :root {
-  --primary-color: #232a3b; /*Ebony Clay*/
-  --secondary-color: #e6eaed; /*Athens Gray*/
+  --primary-color: #232a3b;
+  --secondary-color: #e6eaed;
   --carbon: #1a1a1a;
   --graphite: #2d2d2d;
   --steel: #404040;
@@ -37,9 +37,10 @@ a {
 
 /* === STEP 2: Create the dashboard grid === */
 .dashboard {
+  height: 100vh;
   display: grid;
   grid-template-columns: 80px 1fr;
-  height: 100vh;
+  transition: grid-template-columns 0.3s ease; /* Add transition */
 }
 
 /* === STEP 3: Style the nav rail container === */
@@ -48,12 +49,30 @@ a {
   border-right: 1px solid #e1e5e9;
   padding: 20px 0;
   /* Make it stay on left */
-  grid-column: 1;
+  /* grid-column: 1; */
 
   /* center items */
   display: flex;
   flex-direction: column;
   align-items: center;
+
+}
+
+.nav-rail:hover .nav-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 12px 20px;
+}
+
+.nav-text {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* When hovering the dashboard OR nav-rail, expand the nav */
+.dashboard:hover,
+.nav-rail:hover {
+    grid-template-columns: 200px 1fr; /* Expanded state */
 }
 
 /* === STEP 4: Style ONE nav item === */
@@ -81,5 +100,28 @@ a {
 
 /* === STEP 6: Style the text === */
 .nav-text{
-  
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+}
+
+/* === STEP 7: Add hover effect === */
+.nav-item:hover {
+    background: #f0f4ff;
+    color: #0066ff;
+}
+
+.nav-item:hover i {
+    color: #0066ff;
+}
+
+/* === STEP 8: Main content area === */
+.main-content {
+    grid-column: 2;
+    padding: 40px;
+    background: #f8f9fa;
+}
+
+.main-content h1 {
+    color: #333;
 }
