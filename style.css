@@ -12,7 +12,7 @@
   --carbon: #1a1a1a;
   --graphite: #2d2d2d;
   --steel: #404040;
-  --silver: #ffffff7f;
+  --silver: rgba(255, 255, 255, 0.7);
   --cloud: #e8e8e8;
   --snow: #f8f9fa;
   --electric-blue: #0066ff;
@@ -73,18 +73,18 @@ a {
 .logo-icon {
   width: 30px;
   height: 30px;
-  background: #0066ff;
+  background: var(--electric-blue);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--snow);
   font-weight: bold;
   flex-shrink: 0;
 }
 
 .logo-text {
-  color: white;
+  color: var(--snow);
   font-weight: bold;
   text-transform: uppercase;
   opacity: 0;
@@ -93,7 +93,7 @@ a {
 }
 
 .logo-subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--silver);
   font-size: 0.7rem;
   font-weight: 400;
   opacity: 0;
@@ -112,9 +112,9 @@ a {
 }
 
 .section-title {
-  color: #ffffff7f;
+  color: var(--silver);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 550;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -150,7 +150,7 @@ a {
   transform: translateY(-50%);
   width: 3px;
   height: 60%;
-  background: #0066ff;
+  background: var(--electric-blue);
   border-radius: 0 2px 2px 0;
 }
 
@@ -181,7 +181,7 @@ a {
 }
 
 .nav-item:hover i {
-  color: #0066ff;
+  color: var(--electric-blue);
 }
 
 /* ===== SHOW CONTENT ON HOVER ===== */
