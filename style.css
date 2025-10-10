@@ -3,30 +3,32 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: var(--font-main);
 }
 
 :root {
-  --primary-color: #232a3b;
-  --secondary-color: #e6eaed;
-  --carbon: #1a1a1a;
-  --graphite: #2d2d2d;
-  --steel: #404040;
+  /* === THEME COLORS === */
+  --secondary-color: #0d1b2a;     /* Main background */
   --silver: rgba(255, 255, 255, 0.7);
-  --cloud: #e8e8e8;
-  --snow: #f8f9fa;
-  --electric-blue: #0066ff;
-  --cyber-teal: #00d4aa;
-  --warning: #ff6b35;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --glass: rgba(255, 255, 255, 0.9);
-  --font-main: "Poppins", sans-serif;
+  --rich-black: #0d1b2a;          /* Sidebar background */
+  --oxford-blue: #1b263b;         /* Header / accents */
+  --yinmn-blue: #415a77;          /* Active / highlight */
+  --silver-lake-blue: #778da9;    /* Hover / borders */
+  --platinum: #e0e1dd;            /* Light background */
+
+  /* Neutral palette */
+  --dark-neutral: #232a3b;
+  --light-neutral: #e6eaed;
+
+  /* === TYPOGRAPHY === */
+  --font-main: "Poppins", "Segoe UI", system-ui, sans-serif;
 }
 
 body {
-  background: var(--secondary-color);
+  background: var(--light-neutral);
   height: 100vh;
   overflow: hidden;
+  color: var(--rich-black); /* text readable on platinum bg */
 }
 
 a {
@@ -34,13 +36,15 @@ a {
   text-decoration: none;
 }
 
+/* === DASHBOARD LAYOUT === */
 .dashboard {
   display: flex;
   height: 100vh;
 }
 
+/* === NAVIGATION RAIL === */
 .nav-rail {
-  background-color: var(--primary-color);
+  background-color: var(--rich-black);
   display: flex;
   flex-direction: column;
   padding: 6px 12px;
@@ -54,7 +58,7 @@ a {
   width: 190px;
 }
 
-/* logo Section */
+/* === LOGO SECTION === */
 .logo {
   display: flex;
   flex-direction: column;
@@ -64,7 +68,6 @@ a {
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  text-decoration: none;
   width: 100%;
   margin-top: 1rem;
   padding-left: 7px;
@@ -73,18 +76,18 @@ a {
 .logo-icon {
   width: 30px;
   height: 30px;
-  background: var(--electric-blue);
+  background: var(--platinum);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--snow);
+  color: var(--oxford-blue);
   font-weight: bold;
   flex-shrink: 0;
 }
 
 .logo-text {
-  color: var(--snow);
+  color: var(--platinum);
   font-weight: bold;
   text-transform: uppercase;
   opacity: 0;
@@ -104,7 +107,7 @@ a {
   margin-top: 0.2rem;
 }
 
-/* ===== MAIN MENU SECTION HEADER ===== */
+/* === SECTION HEADER === */
 .section-header {
   padding: 0 20px;
   margin-bottom: 7px;
@@ -122,6 +125,7 @@ a {
   transition: opacity 0.3s ease;
 }
 
+/* === NAV LINKS === */
 .nav-links {
   list-style: none;
   display: flex;
@@ -136,7 +140,7 @@ a {
   gap: 6px;
   width: 100%;
   padding: 5px 12px;
-  color: var(--secondary-color);
+  color: var(--platinum);
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
@@ -150,7 +154,7 @@ a {
   transform: translateY(-50%);
   width: 3px;
   height: 60%;
-  background: var(--electric-blue);
+  background: var(--yinmn-blue); /* replaced electric blue */
   border-radius: 0 2px 2px 0;
 }
 
@@ -177,14 +181,14 @@ a {
 
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-left: 2px solid white;
+  border-left: 2px solid var(--silver-lake-blue); /* replaced electric blue */
 }
 
 .nav-item:hover i {
-  color: var(--electric-blue);
+  color: var(--silver-lake-blue); /* replaced electric blue */
 }
 
-/* ===== SHOW CONTENT ON HOVER ===== */
+/* === SHOW TEXT ON HOVER === */
 .nav-rail:hover .logo-text,
 .nav-rail:hover .logo-subtitle,
 .nav-rail:hover .section-title,
@@ -199,28 +203,45 @@ a {
   gap: 12px;
 }
 
-/* === HEADER === */
-.main-content{
+/* === MAIN CONTENT === */
+.main-content {
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.header{
+.header {
   width: 100%;
   height: 3.5rem;
-  background-color:#00d4aa;
+  background-color: #f9fbff; /* replaced primary color */
   padding: 0 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--rich-black);
 }
 
-.user-profile{
+.user-profile {
   display: flex;
-  gap: 1.5rem;
-  margin-left: 1rem;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.avatar {
+  background-color: var(--yinmn-blue); /* replaced primary color */
+  color: var(--platinum);
+  font-weight: 500;
+  padding: 0.25rem;
+  border: 2px solid var(--yinmn-blue); /* replaced primary color */
+  border-radius: 50%;
+}
+
+.content-area{
+  width: 100%;
+  margin: 1rem;
 }
 
 
