@@ -245,38 +245,120 @@ a {
   border-radius: 50%;
 }
 
+/* === Content Wrapper === */
 .content-area {
-  width: 100%;
-  height: 100vh;
   margin: 12px;
+  width: 100%;
+  height: auto;
+  display: inline-block; /* shrink to content size */
 }
 
+/* === Cards Grid === */
 .stat-cards {
-  height: 9rem;
-  width: auto;
-  background-color: beige;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
+  justify-content: flex-start; /* keeps cards aligned left */
 }
 
+/* === Individual Card === */
 .stat-card {
+  flex: 0 0 280px; /* fixed card width */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  flex-grow: 1;
-  padding: 12px 16px;
-  background-color: #778da9;
-  border-radius: 5px;
-  height: auto;
-  width: auto;
+  gap: 6px;
+  padding: 14px;
+  background-color: #f9fbff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.stat-info{
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* === Info Section === */
+.stat-info {
   display: flex;
-  gap: 32px;
-  border-left: 2px solid var(--platinum)
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 10px;
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+  border-left: 3px solid; /* color set per card */
 }
 
+/* === Icon === */
+.stat-icon {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 1.2rem;
+  padding: 6px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.1); /* fallback */
+  color: #333;
+}
 
+/* === Card Colors === */
+.stat-card:nth-child(1) .stat-info {
+  border-color: #1db954;
+} /* green */
+.stat-card:nth-child(1) .stat-icon {
+  background-color: #1db95433;
+  color: #1db954;
+}
+
+.stat-card:nth-child(2) .stat-info {
+  border-color: #0066cc;
+} /* blue */
+.stat-card:nth-child(2) .stat-icon {
+  background-color: #0066cc33;
+  color: #0066cc;
+}
+
+.stat-card:nth-child(3) .stat-info {
+  border-color: #ff9800;
+} /* orange */
+.stat-card:nth-child(3) .stat-icon {
+  background-color: #ff980033;
+  color: #ff9800;
+}
+
+.stat-card:nth-child(4) .stat-info {
+  border-color: #8e44ad;
+} /* purple */
+.stat-card:nth-child(4) .stat-icon {
+  background-color: #8e44ad33;
+  color: #8e44ad;
+}
+
+/* === Text === */
+.stat-title {
+  color: #778da9; /* silver-lake-blue */
+  font-size: 0.85rem;
+}
+
+.stat-value {
+  color: #232a3b; /* dark-neutral */
+  font-weight: 650;
+  font-size: 1.4rem;
+}
+
+.stat-change {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.stat-change.positive span {
+  color: #1db954;
+}
+.stat-change.negative span {
+  color: #e63946;
+}
