@@ -246,10 +246,10 @@ a {
 }
 
 /* === Content Wrapper === */
-.content-area {
-  margin: 12px;
+.main-content{
+  padding: 1rem;
   width: 100%;
-  height: auto;
+  height: calc(100% - 3.5rem); /* account for header height */
   display: inline-block; /* shrink to content size */
 }
 
@@ -258,12 +258,12 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: flex-start; /* keeps cards aligned left */
+  justify-content:space-around; /* keeps cards aligned center */
 }
 
 /* === Individual Card === */
 .stat-card {
-  flex: 0 0 280px; /* fixed card width */
+  flex: 0 0 250px; /* fixed card width */
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -361,4 +361,21 @@ a {
 }
 .stat-change.negative span {
   color: #e63946;
+}
+
+.charts-grid{
+  width: 100%;
+  height: auto;
+  margin: 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+  background-color: bisque;
+  padding: 1rem;
+}
+
+.line-chart{
+  height: 300px;
+  width: 450px;
 }
