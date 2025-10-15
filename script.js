@@ -1,7 +1,8 @@
 let navItem = document.querySelector(".nav-item");
 const ctx = document.getElementById("revenueChart");
 const periodSelect = document.getElementById("revenue-period");
-const categoryPeriodSelect = document.getElementById("category-period");
+// get context for category chart
+const categoryCtx = document.getElementById('categoryChart').getContext('2d');
 
 navItem.addEventListener("click", () => {
   // alert('Dashboard clicked! This would navigate to dashboard page.');
@@ -37,7 +38,7 @@ function updateChart(period) {
 }
 
 // initial chart setup default 7 days
-const data = {
+const revenueData = {
   labels: generateLabels(7),
   datasets: [
     {
@@ -68,7 +69,7 @@ const data = {
 
 const config = {
   type: 'bar',
-  data: data,
+  data: revenueData,
   options: {
     responsive: true,
     plugins: {
@@ -87,3 +88,59 @@ periodSelect.addEventListener('change', (e) => {
   updateChart(selectedPeriod);
 });
 
+// Sample data for doughnut chart
+const categoryDataSets = {
+  "this-month": {
+    labels: ["Electronics", "Clothing", "Home Goods"],
+    data: [300, 150, 100]
+  },
+  "last-month": {
+     labels: ["Electronics", "Clothing", "Home Goods"],
+     data: [200, 250, 180],
+  },
+  "this-quarter": {
+    labels: ["Electronics", "Clothing", "Home Goods"],
+    data: [700, 500, 400],
+  },
+}
+
+// Initial chart setup
+let currentPeriod = "this-month";
+const chartColors = [
+  'rgb(255, 99, 132)',
+  'rgb(54, 162, 235)',
+  'rgb(255, 205, 86)',
+]
+
+let categoryChart = new Chart(categoryCtx, {
+  type: 'doughnut',
+  data: {
+    labels: categoryDataSets[currentPeriod].labels,
+    datasets: [
+      {
+        label: 'Sales by Category',
+        data: categoryDataSets[currentPeriod].data,
+        backgroundColor: chartColors,
+        hoverOffset: 4,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+      },
+    },
+  },
+});
+
+//Handle dropdown change
+document.getElementById("category-period").addEventListener("change", (e)=>{
+  const period = e.target.value;
+  const dataset = categoryDataSets[period];
+
+  categoryChart.data.labels = dataset.labels;
+  categoryChart.data.datasets[0].data = dataset.data;
+  categoryChart.update();
+})
