@@ -247,7 +247,7 @@ a {
 }
 
 /* === Content Wrapper === */
-.main-content{
+.main-content {
   padding: 1rem;
   width: 100%;
   height: calc(100% - 3.5rem); /* account for header height */
@@ -259,12 +259,12 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content:space-between; /* keeps cards aligned center */
+  justify-content: space-between; /* keeps cards aligned center */
 }
 
 /* === Individual Card === */
 .stat-card {
-  flex: 0 0 240px; /* fixed card width */
+  flex: 0 0 242px; /* fixed card width */
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -364,21 +364,77 @@ a {
   color: #e63946;
 }
 
- /* === charts === */
+/* === charts === */
 
-.charts-grid{
+.charts-grid {
   width: 100%;
   height: auto;
   margin: 12px 0;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: space-around;
-  background-color: bisque;
+  justify-content: space-between;
   padding: 1rem;
 }
 
-.line-chart{
+.chart-card {
+  background-color: #f9fbff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  display: flex; /* Makes the container a flex container */
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns items to the start of the cross-axis */
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* chart type */
+
+.line-chart {
   height: 300px;
-  width: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.doughnut-chart {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.revenue-chart {
+  flex-grow: 1; /* Allows this div to grow and take up remaining space */
+  height: 350px; /* Set a fixed height */
+  min-width: 350px; /* Optional: Set a minimum width to prevent it from getting too small */
+  max-width: 650px; /* Optional: Set a maximum width to prevent it from getting too large */
+}
+
+.category-chart {
+  width: 350px; /* Set a fixed width for the half-width div */
+  height: 350px; /* Set the height equal to the width for a half-width div */
+  flex-shrink: 0; /* Prevents the half-width div from shrinking */
+}
+
+/* chart-headers */
+.chart-headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--yinmn-blue);
 }
