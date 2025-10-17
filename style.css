@@ -3,25 +3,45 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-main);
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
 }
 
 :root {
   /* === THEME COLORS === */
-  --secondary-color: #0d1b2a; /* Main background */
+  --secondary-color: #0d1b2a;
   --silver: rgba(255, 255, 255, 0.7);
-  --rich-black: #0d1b2a; /* Sidebar background */
-  --oxford-blue: #1b263b; /* Header / accents */
-  --yinmn-blue: #415a77; /* Active / highlight */
-  --silver-lake-blue: #778da9; /* Hover / borders */
-  --platinum: #e0e1dd; /* Light background */
-
-  /* Neutral palette */
+  --rich-black: #0d1b2a;
+  --oxford-blue: #1b263b;
+  --yinmn-blue: #415a77;
+  --silver-lake-blue: #778da9;
+  --platinum: #e0e1dd;
   --dark-neutral: #232a3b;
   --light-neutral: #e6eaed;
 
-  /* === TYPOGRAPHY === */
-  --font-main: "Poppins", "Segoe UI", system-ui, sans-serif;
+   /* Additional colors for better contrast */
+  --success-color: #1db954;
+  --warning-color: #ff9800;
+  --info-color: #0066cc;
+  --purple-color: #8e44ad;
+  --danger-color: #e63946;
+
+  /* Spacing system */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+
 }
 
 body {
@@ -29,29 +49,35 @@ body {
   height: 100vh;
   overflow: hidden;
   color: var(--rich-black); /* text readable on platinum bg */
+  line-height: 1.5;
 }
 
-a {
+a, button, .nav-item, .stat-card {
   color: inherit;
   text-decoration: none;
+  outline: none;
 }
+
+
 
 /* === DASHBOARD LAYOUT === */
 .dashboard {
-  display: flex;
+  position: relative;
   height: 100vh;
 }
 
 /* === NAVIGATION RAIL === */
 .nav-rail {
-  background-color: var(--rich-black);
-  display: flex;
-  flex-direction: column;
-  padding: 6px 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 75px;
-  flex-shrink: 0;
-  transition: width 0.3s ease-in-out;
+  background-color: var(--rich-black);
+  transition: width 0.3s ease;
+  z-index: 10;
+  overflow-x: hidden;
+  padding-left: 1rem;
 }
 
 .nav-rail:hover {
@@ -67,32 +93,34 @@ a {
 .logo-content {
   display: flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: var(--space-xs);
   width: 100%;
   margin-top: 1rem;
   padding-left: 7px;
 }
 
 .logo-icon {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   background: var(--platinum);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--oxford-blue);
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 0.9rem;
   flex-shrink: 0;
 }
 
 .logo-text {
   color: var(--platinum);
-  font-weight: bold;
+  font-weight: 700;
   text-transform: uppercase;
   opacity: 0;
   white-space: nowrap;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal);
+  font-size: 0.9rem;
 }
 
 .logo-subtitle {
@@ -100,29 +128,29 @@ a {
   font-size: 0.7rem;
   font-weight: 400;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal);
   white-space: nowrap;
   text-align: center;
   line-height: 1.3;
-  margin-top: 0.2rem;
+  margin-top: var(--space-xs);
 }
 
 /* === SECTION HEADER === */
 .section-header {
-  padding: 0 20px;
-  margin-bottom: 7px;
-  margin-top: 30px;
+  padding: 0 var(--space-md);
+  margin: var(--space-xl) 0 var(--space-sm);
+  z-index: 10;
 }
 
 .section-title {
   color: var(--silver);
-  font-size: 0.8rem;
-  font-weight: 550;
+  font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal);
 }
 
 /* === NAV LINKS === */
@@ -130,14 +158,15 @@ a {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-xs);
+  flex: 1;
 }
 
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
+  gap: var(--space-sm);
   width: 100%;
   padding: 5px 12px;
   color: var(--platinum);
@@ -165,12 +194,13 @@ a {
 }
 
 .nav-text {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: #ffffff;
   opacity: 0;
   transition: opacity 0.3s ease;
   white-space: nowrap;
+  flex: 1;
 }
 
 .nav-item a {
@@ -181,11 +211,12 @@ a {
 
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-left: 2px solid var(--silver-lake-blue); /* replaced electric blue */
+  color: var(--platinum);
+  border-left: 2px solid var(--silver-lake-blue); 
 }
 
 .nav-item:hover i {
-  color: var(--silver-lake-blue); /* replaced electric blue */
+  color: var(--silver-lake-blue); 
 }
 
 /* === SHOW TEXT ON HOVER === */
@@ -205,61 +236,94 @@ a {
 
 /* === MAIN CONTENT === */
 .container {
-  width: 100%;
+  position: relative;
+  margin-left: 75px; /* same as sidebar width */
+  height: 100vh;
+  transition: margin-left var(--transition-normal);
+  flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
-.main-content {
-  height: 100vh;
-  width: calc(100% - 32px); /* subtract sidebar width */
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
+
+/* When sidebar expands on hover */
+.nav-rail:hover ~ .container {
+  margin-left: 190px;
+}
+
+
+/* When sidebar expands, move the whole container block — NOT its inner children */
+.nav-rail:hover ~ .main-content {
+  transform: translateX(190px);
 }
 
 .header {
   width: 100%;
   height: 3.5rem;
-  background-color: #f9fbff; /* replaced primary color */
-  padding: 0 0.5rem;
+  background-color: #f9fbff; 
+  padding: 0 var(--space-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--rich-black);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 5;
 }
 
 .user-profile {
   display: flex;
-  gap: 0.6rem;
+  gap: var(--space-sm);
   align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
+  padding: var(--space-sm);
 }
 
 .avatar {
-  background-color: var(--yinmn-blue); /* replaced primary color */
-  color: var(--platinum);
+  background-color: var(--yinmn-blue);
+  color: var(--platinum); 
   font-weight: 500;
-  padding: 0.25rem;
-  border: 2px solid var(--yinmn-blue); /* replaced primary color */
+  padding: var(--space-xs);
+  border: 2px solid var(--yinmn-blue);
   border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  font-size: 0.9rem;
 }
 
-/* === Content Wrapper === */
+/* Content  */
 .main-content {
-  padding: 1rem;
-  width: 100%;
-  height: calc(100% - 3.5rem); /* account for header height */
-  display: inline-block; /* shrink to content size */
+  padding: var(--space-xl);
+  height: calc(100% - 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--silver-lake-blue) transparent;  
+}
+
+.main-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb{
+  background-color:var(--silver-lake-blue);
+  border-radius: 3px;
 }
 
 /* === Cards Grid === */
 .stat-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between; /* keeps cards aligned center */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  width: 100%;
+  max-width: 1200px;
+  align-self: center;
 }
 
 /* === Individual Card === */
@@ -267,94 +331,105 @@ a {
   flex: 0 0 242px; /* fixed card width */
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 14px;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
   background-color: #f9fbff;
-  border-radius: 4px;
+  border-radius: var(--space-xs);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
 }
 
-.stat-card:hover {
+.stat-card:hover,
+.stat-card:focus {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: rgba(119, 141, 169, 0.2);
 }
 
 /* === Info Section === */
 .stat-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  padding-left: 10px;
+  gap: var(--space-xs);
+  padding-left: var(--space-sm);
   position: relative;
   width: 100%;
   min-height: 60px;
-  border-left: 3px solid; /* color set per card */
+  border-left: 3px solid; 
 }
 
 /* === Icon === */
 .stat-icon {
   position: absolute;
-  top: 5px;
-  right: 8px;
+  top: 0;
+  right: 0;
   font-size: 1.2rem;
-  padding: 6px;
-  border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.1); /* fallback */
-  color: #333;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+}
+
+.stat-card:hover .stat-icon{
+  transform: scale(1.1);
 }
 
 /* === Card Colors === */
 .stat-card:nth-child(1) .stat-info {
-  border-color: #1db954;
-} /* green */
+  border-color: var(--success-color);
+}
 .stat-card:nth-child(1) .stat-icon {
-  background-color: #1db95433;
-  color: #1db954;
+  background-color: rgba(29, 185, 84, 0.15);
+  color: var(--success-color);
 }
 
 .stat-card:nth-child(2) .stat-info {
-  border-color: #0066cc;
-} /* blue */
+ border-color: var(--info-color);
+} 
 .stat-card:nth-child(2) .stat-icon {
-  background-color: #0066cc33;
-  color: #0066cc;
+  background-color: rgba(0, 102, 204, 0.15);
+  color: var(--info-color);
 }
 
 .stat-card:nth-child(3) .stat-info {
-  border-color: #ff9800;
-} /* orange */
+  border-color: var(--warning-color);
+} 
 .stat-card:nth-child(3) .stat-icon {
-  background-color: #ff980033;
-  color: #ff9800;
+  background-color: rgba(255, 152, 0, 0.15);
+  color: var(--warning-color);
 }
 
 .stat-card:nth-child(4) .stat-info {
-  border-color: #8e44ad;
-} /* purple */
+  border-color: var(--purple-color);
+} 
 .stat-card:nth-child(4) .stat-icon {
-  background-color: #8e44ad33;
-  color: #8e44ad;
+  background-color: rgba(142, 68, 173, 0.15);
+  color: var(--purple-color);
 }
 
 /* === Text === */
 .stat-title {
-  color: #778da9; /* silver-lake-blue */
+  color: var(--silver-lake-blue); 
   font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .stat-value {
-  color: #232a3b; /* dark-neutral */
-  font-weight: 650;
-  font-size: 1.4rem;
+  color: var(--dark-neutral);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.2;
 }
 
 .stat-change {
   display: flex;
   align-items: center;
   font-size: 0.85rem;
-  margin-top: 4px;
+  margin-top: var(--space-xs);
+  font-weight: 500;
+  gap: 2px;
 }
 
 .stat-change.positive span {
@@ -371,23 +446,25 @@ a {
   height: auto;
   margin: 12px 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
-  padding: 1rem;
+  flex-wrap: nowrap;
+  gap: var(--space-lg);
+  align-items: start;
 }
 
+
+/* need improvements from here */
 .chart-card {
   background-color: #f9fbff;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   padding: 1rem;
-  display: flex; /* Makes the container a flex container */
-  flex-direction: column;
-  justify-content: flex-start; /* Aligns items to the start of the cross-axis */
-  gap: 0.5rem;
-  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: auto; /* allow flexible sizing */
+  height: auto;
+  min-height: 350px; /* keeps chart visible */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .chart-card:hover {
@@ -414,16 +491,16 @@ a {
 }
 
 .revenue-chart {
-  flex-grow: 1; /* Allows this div to grow and take up remaining space */
-  height: 350px; /* Set a fixed height */
-  min-width: 350px; /* Optional: Set a minimum width to prevent it from getting too small */
-  max-width: 650px; /* Optional: Set a maximum width to prevent it from getting too large */
+  flex-grow: 1;
+  height: 280px;
+  min-width: 350px;
+  max-width: 650px;
 }
 
 .category-chart {
-  width: 350px; /* Set a fixed width for the half-width div */
-  height: 350px; /* Set the height equal to the width for a half-width div */
-  flex-shrink: 0; /* Prevents the half-width div from shrinking */
+  width: 350px;
+  height: 280px;
+  flex-shrink: 0;
 }
 
 /* chart-headers */
@@ -437,4 +514,10 @@ a {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--yinmn-blue);
+}
+
+.main-content,
+.stat-cards,
+.charts-grid {
+  transition: none !important;
 }

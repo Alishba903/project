@@ -3,6 +3,17 @@ const ctx = document.getElementById("revenueChart");
 const periodSelect = document.getElementById("revenue-period");
 // get context for category chart
 const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+const dashboard = document.querySelector(".dashboard");
+const sidebar =document.querySelector(".nav-rail");
+
+// === Sidebar hover smooth shift === 
+sidebar.addEventListener("mouseenter",()=>{
+  dashboard.classList.add("expanded");
+})
+
+sidebar.addEventListener("mouseleave", ()=>{
+  dashboard.classList.remove("expanded");
+})
 
 navItem.addEventListener("click", () => {
   // alert('Dashboard clicked! This would navigate to dashboard page.');
