@@ -219,6 +219,13 @@ a, button, .nav-item, .stat-card {
   color: var(--silver-lake-blue); 
 }
 
+@supports (backdrop-filter: blur(10px)) {
+  .nav-rail {
+    backdrop-filter: blur(10px);
+    background-color: rgba(13, 27, 42, 0.95);
+  }
+}
+
 /* === SHOW TEXT ON HOVER === */
 .nav-rail:hover .logo-text,
 .nav-rail:hover .logo-subtitle,
@@ -451,39 +458,29 @@ a, button, .nav-item, .stat-card {
   align-items: start;
 }
 
-
-/* need improvements from here */
 .chart-card {
   background-color: #f9fbff;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  padding: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: auto; /* allow flexible sizing */
-  height: auto;
+  padding: var(--space-lg);
+  transition: all var(--transition-fast);
   min-height: 350px; /* keeps chart visible */
+  border: 1px solid transparent;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .chart-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: rgba(119, 141, 169, 0.2);
 }
 
 /* chart type */
 
-.line-chart {
-  height: 300px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+.line-chart,
 .doughnut-chart {
-  height: 300px;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -492,15 +489,11 @@ a, button, .nav-item, .stat-card {
 
 .revenue-chart {
   flex-grow: 1;
-  height: 280px;
-  min-width: 350px;
-  max-width: 650px;
 }
 
 .category-chart {
-  width: 350px;
+  width: 33%;
   height: 280px;
-  flex-shrink: 0;
 }
 
 /* chart-headers */
@@ -508,16 +501,12 @@ a, button, .nav-item, .stat-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: var(--space-md);
 }
 
 .chart-title {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: var(--yinmn-blue);
+  color: var(--secondary-color);
 }
 
-.main-content,
-.stat-cards,
-.charts-grid {
-  transition: none !important;
-}

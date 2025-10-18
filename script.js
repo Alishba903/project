@@ -1,4 +1,4 @@
-let navItem = document.querySelector(".nav-item");
+let navItems = document.querySelectorAll(".nav-item");
 const ctx = document.getElementById("revenueChart");
 const periodSelect = document.getElementById("revenue-period");
 // get context for category chart
@@ -15,11 +15,11 @@ sidebar.addEventListener("mouseleave", ()=>{
   dashboard.classList.remove("expanded");
 })
 
-navItem.addEventListener("click", () => {
-  // alert('Dashboard clicked! This would navigate to dashboard page.');
-
-  this.style.background = "#e6f0ff";
-  this.style.color = "#0066ff";
+navItems.forEach(item => {
+  item.addEventListener("click", () => {
+    navItems.forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
+  });
 });
 
 // Sample data for the chart
