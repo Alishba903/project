@@ -238,3 +238,29 @@ document.querySelectorAll(".transaction-table tbody tr").forEach((row) => {
   row.addEventListener("mouseenter", () => row.classList.add("hover"));
   row.addEventListener("mouseleave", () => row.classList.remove("hover"));
 });
+
+
+// === THEME TOGGLER ===
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  // Load saved theme from localStorage (if any)
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
+    themeToggle.innerHTML = `<i class="fas fa-sun"></i>`;
+  }
+
+  themeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+      themeToggle.innerHTML = `<i class="fas fa-sun"></i>`;
+      localStorage.setItem("theme", "dark");
+    } else {
+      themeToggle.innerHTML = `<i class="fas fa-moon"></i>`;
+      localStorage.setItem("theme", "light");
+    }
+  });
+});

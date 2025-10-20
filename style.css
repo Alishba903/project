@@ -49,6 +49,7 @@ body {
   overflow: hidden;
   color: var(--rich-black); /* text readable on platinum bg */
   line-height: 1.5;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 a,
@@ -355,10 +356,20 @@ button,
 
 .stat-card:hover,
 .stat-card:focus {
-  transform: translateY(-3px);
+  opacity: 0;
+  transform: translateY(10px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   border-color: rgba(119, 141, 169, 0.2);
+  animation: fadeUp 0.6s ease forwards;
 }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* === Info Section === */
 .stat-info {
@@ -630,6 +641,67 @@ button,
   padding: var(--space-xs);
 }
 
+/* === DARK MODE THEME === */
+body.dark-mode {
+  --platinum: #1c1c27;
+  --light-neutral: #11131a;
+  --rich-black: #e0e1dd;
+  --secondary-color: #e0e1dd;
+  --oxford-blue: #242836;
+  --yinmn-blue: #556b8a;
+  --silver-lake-blue: #a6b1c0;
+
+  background-color: var(--light-neutral);
+  color: var(--platinum);
+}
+
+body.dark-mode .header,
+body.dark-mode .stat-card,
+body.dark-mode .chart-card,
+body.dark-mode .transaction-section {
+  background-color: var(--oxford-blue);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .nav-rail {
+  background-color: var(--dark-neutral);
+}
+
+body.dark-mode .nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .nav-item i,
+body.dark-mode .nav-text,
+body.dark-mode .section-title,
+body.dark-mode .logo-text,
+body.dark-mode .logo-subtitle {
+  color: var(--platinum);
+}
+
+body.dark-mode .period-select,
+body.dark-mode .transaction-filter {
+  background: var(--oxford-blue);
+  color: var(--platinum);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Toggle button style */
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(15deg);
+  color: var(--yinmn-blue);
+}
+
+
 @media (max-width: 1024px) {
   .stat-cards {
     flex-wrap: wrap;
@@ -643,6 +715,9 @@ button,
     flex-wrap: wrap;
   }
 }
+
+
+
 
 @media (max-width: 768px) {
   .chart-cards {
