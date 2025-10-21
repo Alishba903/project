@@ -1,4 +1,3 @@
-/* === STEP 1: Reset and base styles === */
 * {
   margin: 0;
   padding: 0;
@@ -47,7 +46,7 @@ body {
   background: var(--light-neutral);
   height: 100vh;
   overflow: hidden;
-  color: var(--rich-black); /* text readable on platinum bg */
+  color: var(--rich-black);
   line-height: 1.5;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
@@ -61,13 +60,13 @@ button,
   outline: none;
 }
 
-/* === DASHBOARD LAYOUT === */
+/* DASHBOARD LAYOUT */
 .dashboard {
   position: relative;
   height: 100vh;
 }
 
-/* === NAVIGATION RAIL === */
+/* NAVIGATION RAIL */
 .nav-rail {
   position: fixed;
   top: 0;
@@ -85,7 +84,7 @@ button,
   width: 190px;
 }
 
-/* === LOGO SECTION === */
+/* LOGO SECTION */
 .logo {
   display: flex;
   flex-direction: column;
@@ -100,17 +99,10 @@ button,
   padding-left: 7px;
 }
 
-.logo-icon {
+.logo-img img {
   width: 32px;
   height: 32px;
-  background: var(--platinum);
   border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--oxford-blue);
-  font-weight: 700;
-  font-size: 0.9rem;
   flex-shrink: 0;
 }
 
@@ -136,7 +128,7 @@ button,
   margin-top: var(--space-xs);
 }
 
-/* === SECTION HEADER === */
+/* SECTION HEADER */
 .section-header {
   padding: 0 var(--space-md);
   margin: var(--space-xl) 0 var(--space-sm);
@@ -154,7 +146,7 @@ button,
   transition: opacity var(--transition-normal);
 }
 
-/* === NAV LINKS === */
+/* NAV LINKS */
 .nav-links {
   list-style: none;
   display: flex;
@@ -232,7 +224,7 @@ button,
   }
 }
 
-/* === SHOW TEXT ON HOVER === */
+/* SHOW TEXT ON HOVER */
 .nav-rail:hover .logo-text,
 .nav-rail:hover .logo-subtitle,
 .nav-rail:hover .section-title,
@@ -247,10 +239,10 @@ button,
   gap: 12px;
 }
 
-/* === MAIN CONTENT === */
+/* MAIN CONTENT */
 .container {
   position: relative;
-  margin-left: 75px; /* same as sidebar width */
+  margin-left: 75px;
   height: 100vh;
   transition: margin-left var(--transition-normal);
   flex: 1;
@@ -258,16 +250,15 @@ button,
   flex-direction: column;
 }
 
-/* When sidebar expands on hover */
 .nav-rail:hover ~ .container {
   margin-left: 190px;
 }
 
-/* When sidebar expands, move the whole container block — NOT its inner children */
 .nav-rail:hover ~ .main-content {
   transform: translateX(190px);
 }
 
+/* Header section */
 .header {
   width: 100%;
   height: 3.5rem;
@@ -328,7 +319,7 @@ button,
   border-radius: 3px;
 }
 
-/* === Cards Grid === */
+/* Cards */
 .stat-cards {
   width: 100%;
   min-height: auto;
@@ -339,9 +330,9 @@ button,
   align-items: start;
 }
 
-/* === Individual Card === */
+/* Individual Card */
 .stat-card {
-  flex: 1; /* flexible card width */
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -370,8 +361,7 @@ button,
   }
 }
 
-
-/* === Info Section === */
+/* Info Section */
 .stat-info {
   display: flex;
   flex-direction: column;
@@ -383,7 +373,7 @@ button,
   border-left: 3px solid;
 }
 
-/* === Icon === */
+/* Icon */
 .stat-icon {
   position: absolute;
   top: 0;
@@ -399,7 +389,7 @@ button,
   transform: scale(1.1);
 }
 
-/* === Card Colors === */
+/* Card Colors */
 .stat-card:nth-child(1) .stat-info {
   border-color: var(--success-color);
 }
@@ -432,7 +422,7 @@ button,
   color: var(--purple-color);
 }
 
-/* === Text === */
+/* Text  */
 .stat-title {
   color: var(--silver-lake-blue);
   font-size: 0.85rem;
@@ -440,7 +430,7 @@ button,
 }
 
 .stat-value {
-  color: var(--dark-neutral);
+  color: var(--rich-black);
   font-weight: 700;
   font-size: 1.3rem;
   line-height: 1.2;
@@ -462,16 +452,16 @@ button,
   color: #e63946;
 }
 
-/* === charts === */
+/* charts  */
 
-.charts-grid {
+.charts {
   width: 100%;
   height: auto;
   margin: 10px 0;
   display: flex;
   flex-wrap: nowrap;
   gap: var(--space-lg);
-  align-items: stretch; /* Changed from 'start' to 'stretch' */
+  align-items: stretch;
 }
 
 .chart-card {
@@ -480,11 +470,11 @@ button,
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   padding: var(--space-lg);
   transition: all var(--transition-fast);
-  min-height: 280px; /* keeps chart visible */
+  min-height: 280px;
   border: 1px solid transparent;
   display: flex;
   flex-direction: column;
-  flex: 1; /* Added to make cards equal width */
+  flex: 1;
 }
 
 .chart-card:hover {
@@ -496,7 +486,7 @@ button,
 /* Chart containers */
 .line-chart,
 .doughnut-chart {
-  height: 250px; /* Fixed height for consistency */
+  height: 250px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -504,12 +494,13 @@ button,
 }
 
 .revenue-chart {
-  flex: 2; /* Takes twice the space of category-chart */
+  flex: 2;
 }
 
 .category-chart {
-  flex: 1; /* Takes half the space of revenue-chart */
+  flex: 1;
 }
+
 /* chart-headers */
 .chart-headers {
   display: flex;
@@ -535,7 +526,7 @@ button,
   padding: var(--space-xs);
 }
 
-/* === transaction === */
+/* transaction */
 .transaction-section {
   background: #f9fbff;
   border-radius: var(--space-sm);
@@ -568,7 +559,7 @@ button,
 
 .transaction-table {
   width: 100%;
-  border-collapse: collapse; /* key line – merges cell borders into one */
+  border-collapse: collapse;
   font-size: 0.9rem;
 }
 
@@ -576,7 +567,7 @@ button,
 .transaction-table td {
   text-align: left;
   padding: 18px 12px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* single continuous line */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .transaction-table thead th {
@@ -597,7 +588,7 @@ button,
   font-weight: 600;
 }
 
-/* === STATUS BADGES === */
+/* STATUS BADGES  */
 .status-badge {
   display: inline-block;
   padding: 4px 10px;
@@ -623,7 +614,7 @@ button,
   border: 1px solid rgba(255, 152, 0, 0.25);
 }
 
-/* Failed / Canceled (optional future) */
+/* Failed / Canceled */
 .status-badge.failed {
   background-color: rgba(230, 57, 70, 0.15);
   color: var(--danger-color);
@@ -641,7 +632,7 @@ button,
   padding: var(--space-xs);
 }
 
-/* === DARK MODE THEME === */
+/* DARK MODE THEME */
 body.dark-mode {
   --platinum: #1c1c27;
   --light-neutral: #11131a;
@@ -660,6 +651,7 @@ body.dark-mode .stat-card,
 body.dark-mode .chart-card,
 body.dark-mode .transaction-section {
   background-color: var(--oxford-blue);
+  color: whitesmoke;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -671,18 +663,16 @@ body.dark-mode .nav-item:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-body.dark-mode .nav-item i,
-body.dark-mode .nav-text,
 body.dark-mode .section-title,
 body.dark-mode .logo-text,
 body.dark-mode .logo-subtitle {
-  color: var(--platinum);
+  color: whitesmoke;
 }
 
 body.dark-mode .period-select,
 body.dark-mode .transaction-filter {
   background: var(--oxford-blue);
-  color: var(--platinum);
+  color: var(--light-neutral);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -692,15 +682,15 @@ body.dark-mode .transaction-filter {
   border: none;
   cursor: pointer;
   color: var(--secondary-color);
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   transition: color 0.3s ease, transform 0.2s ease;
+  padding: var(--space-xs);
 }
 
 #theme-toggle:hover {
   transform: rotate(15deg);
   color: var(--yinmn-blue);
 }
-
 
 @media (max-width: 1024px) {
   .stat-cards {
@@ -711,17 +701,14 @@ body.dark-mode .transaction-filter {
     min-width: 230px;
   }
 
-  .charts-grid {
+  .charts {
     flex-wrap: wrap;
   }
 }
 
-
-
-
 @media (max-width: 768px) {
   .chart-cards {
-    flex-direction: column; /* stack charts vertically */
+    flex-direction: column;
     gap: var(--space-md);
   }
 
@@ -736,7 +723,7 @@ body.dark-mode .transaction-filter {
   .transaction-table {
     display: block;
     overflow-x: auto;
-    white-space: nowrap; /* prevents text wrapping inside cells */
+    white-space: nowrap;
   }
 
   .transaction-table th,

@@ -1,19 +1,11 @@
 let navItems = document.querySelectorAll(".nav-item");
 const ctx = document.getElementById("revenueChart");
 const periodSelect = document.getElementById("revenue-period");
-// get context for category chart
 const categoryCtx = document.getElementById("categoryChart").getContext("2d");
 const dashboard = document.querySelector(".dashboard");
 const sidebar = document.querySelector(".nav-rail");
-
-// === Sidebar hover smooth shift ===
-sidebar.addEventListener("mouseenter", () => {
-  dashboard.classList.add("expanded");
-});
-
-sidebar.addEventListener("mouseleave", () => {
-  dashboard.classList.remove("expanded");
-});
+const transactionBody = document.getElementById("transaction-body");
+const transactionFilter = document.querySelector(".transaction-filter");
 
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
@@ -157,7 +149,7 @@ document.getElementById("category-period").addEventListener("change", (e) => {
   categoryChart.update();
 });
 
-// === TRANSACTION SECTION ===
+// TRANSACTION SECTION
 document.addEventListener("DOMContentLoaded", () => {
   const transactions = [
     {
@@ -197,9 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  const transactionBody = document.getElementById("transaction-body");
-  const transactionFilter = document.querySelector(".transaction-filter");
-
   function renderTransactions(filter = "all") {
     transactionBody.innerHTML = "";
 
@@ -233,12 +222,11 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTransactions();
 });
 
-// Example: highlight rows on hover
+// highlight rows on hover
 document.querySelectorAll(".transaction-table tbody tr").forEach((row) => {
   row.addEventListener("mouseenter", () => row.classList.add("hover"));
   row.addEventListener("mouseleave", () => row.classList.remove("hover"));
 });
-
 
 // === THEME TOGGLER ===
 document.addEventListener("DOMContentLoaded", () => {
